@@ -3,106 +3,241 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Deutschlabor – Erörterungswerkstatt Klasse 8</title>
+<title>Schreibwerkstatt Deutsch | Lineare Erörterung · Klasse 8</title>
 <style>
 :root{
- --bg:#f7f9fc;--card:#fff;--ink:#172033;--muted:#667085;--line:#e5eaf1;
- --blue:#3b82f6;--blue-soft:#eaf4ff;--yellow:#fff4d6;--green:#e9f8ef;
- --pink:#fff0f3;--purple:#f1efff;--shadow:0 4px 18px rgba(20,40,80,.06)
+ --bg:#f6f7f8;--card:#ffffff;--ink:#202a35;--muted:#687582;--line:#dfe4e8;
+ --accent:#245c63;--accent-soft:#eaf2f2;--accent-dark:#17454b;
+ --good:#2d6a4f;--good-soft:#edf5f0;--warn:#8a5a18;--warn-soft:#fbf4e8;
+ --bad:#8d3d3d;--bad-soft:#f8eeee;--shadow:0 2px 8px rgba(22,34,44,.035)
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.62 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 .app{display:flex;min-height:100vh}
-.side{position:fixed;inset:0 auto 0 0;width:278px;background:#fff;border-right:1px solid var(--line);padding:24px 14px;overflow:auto}
-.brand{font-size:18px;font-weight:800;padding:7px 16px 24px;color:#111827}
-.brand small{display:block;color:var(--muted);font-size:12px;font-weight:500;margin-top:2px}
-.nav-title{margin:18px 12px 7px;color:#98a2b3;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
-.nav button{width:100%;border:0;background:transparent;color:#344054;text-align:left;padding:11px 13px;border-radius:11px;margin:2px 0}
-.nav button:hover,.nav button.active{background:var(--blue-soft);color:#175cd3}
-.main{margin-left:278px;width:calc(100% - 278px);padding:28px 32px;max-width:1500px}
-.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:18px}
-h1{font-size:30px;line-height:1.15;margin:0 0 4px;letter-spacing:-.03em}
-h2{margin:0 0 10px;letter-spacing:-.02em}h3{margin:0 0 7px}
+.side{position:fixed;inset:0 auto 0 0;width:258px;background:#fff;border-right:1px solid var(--line);padding:24px 13px;overflow:auto}
+.brand{font-size:16px;font-weight:750;padding:7px 14px 23px;color:var(--ink);letter-spacing:-.02em}
+.brand small{display:block;color:var(--muted);font-size:12px;font-weight:450;margin-top:3px;letter-spacing:0}
+.nav-title{margin:18px 12px 6px;color:#7c8791;font-size:10px;text-transform:uppercase;letter-spacing:.13em;font-weight:750}
+.nav button{width:100%;border:0;background:transparent;color:#43515c;text-align:left;padding:9px 12px;border-radius:7px;margin:1px 0;font-size:13px}
+.nav button:hover{background:#f2f5f5;color:var(--accent-dark)}
+.nav button.active{background:var(--accent-soft);color:var(--accent-dark);font-weight:700;box-shadow:inset 2px 0 0 var(--accent)}
+.main{margin-left:258px;width:calc(100% - 258px);padding:32px 38px;max-width:1540px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:22px}
+h1{font-size:29px;line-height:1.2;margin:0 0 7px;letter-spacing:-.035em;font-weight:730}
+h2{margin:0 0 11px;letter-spacing:-.025em;font-size:20px;font-weight:700}h3{margin:0 0 7px;font-size:16px}
+p{margin:8px 0 12px}
 .muted{color:var(--muted)}
-.pill{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;background:var(--blue-soft);color:#175cd3;font-size:12px;font-weight:800}
-.hero{background:#eaf5ff;border:1px solid #d8ebff;border-radius:20px;padding:27px 30px;margin-bottom:18px}
-.hero:before{content:"DEUTSCH · KLASSE 8";display:block;letter-spacing:.18em;font-size:11px;font-weight:800;color:#526173;margin-bottom:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:15px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:var(--shadow);margin-bottom:15px}
-.module{min-height:180px;position:relative}
-.module:nth-child(4n+1){background:var(--yellow)}.module:nth-child(4n+2){background:var(--blue-soft)}
-.module:nth-child(4n+3){background:var(--green)}.module:nth-child(4n){background:var(--pink)}
-.module .num{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#fff;font-weight:850;margin-bottom:12px}
-.module.done{outline:2px solid #86efac}.module.done .num{background:#dcfce7;color:#166534}
-.btn{border:0;border-radius:9px;padding:10px 15px;font-weight:800;background:var(--blue);color:#fff}
-.btn.secondary{background:#fff;color:#175cd3;border:1px solid #cfe1fa}
-.btn.good{background:#16a34a}.btn.ghost{background:#f2f4f7;color:#344054}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:5px;background:#f0f3f4;color:#4c5a64;font-size:11px;font-weight:750;letter-spacing:.035em}
+.hero{background:#eaf2f2;border:1px solid #d7e4e4;border-radius:10px;padding:30px 32px;margin-bottom:20px}
+.hero:before{content:"DEUTSCH · JAHRGANGSSTUFE 8";display:block;letter-spacing:.14em;font-size:10px;font-weight:800;color:#526d70;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:21px;box-shadow:var(--shadow);margin-bottom:15px}
+.module{min-height:160px;position:relative;background:#fff}
+.module:nth-child(n){background:#fff}
+.module .num{width:30px;height:30px;display:grid;place-items:center;border-radius:6px;background:var(--accent-soft);color:var(--accent-dark);font-weight:800;margin-bottom:13px}
+.module.done{border-color:#a9c9b8}.module.done .num{background:var(--good-soft);color:var(--good)}
+.btn{border:1px solid var(--accent);border-radius:6px;padding:10px 15px;font-weight:700;background:var(--accent);color:#fff}
+.btn:hover{background:var(--accent-dark)}
+.btn.secondary{background:#fff;color:var(--accent-dark);border:1px solid #b8c8ca}
+.btn.good{background:var(--good);border-color:var(--good)}.btn.ghost{background:#f2f4f5;color:#34434c;border-color:#e1e6e8}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-.progress{height:8px;border-radius:99px;background:#e7ecf2;overflow:hidden}
-.progress>div{height:100%;background:var(--blue)}
+.progress{height:6px;border-radius:99px;background:#e8ecee;overflow:hidden}
+.progress>div{height:100%;background:var(--accent)}
 .choicegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
-.choice{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:13px;text-align:left}
-.choice:hover{border-color:#8ab8f8}
-.choice.correct{border-color:#22c55e;background:#f0fdf4}
-.choice.wrong{border-color:#ef4444;background:#fef2f2}
-.feedback{margin-top:13px;border:1px solid var(--line);background:#f8fafc;border-radius:11px;padding:12px}
-.feedback.good{background:#f0fdf4;border-color:#bbf7d0}.feedback.warn{background:#fffbeb;border-color:#fde68a}.feedback.bad{background:#fef2f2;border-color:#fecaca}
-.quote{border-left:4px solid #8ab8f8;padding:10px 14px;background:#f8fafc;border-radius:0 10px 10px 0}
-.step{display:flex;gap:10px;margin:10px 0}.circle{min-width:30px;height:30px;border-radius:50%;background:var(--blue-soft);color:#175cd3;display:grid;place-items:center;font-weight:850}
-textarea,input,select{width:100%;padding:10px;border:1px solid #d0d5dd;border-radius:9px;background:#fff;color:var(--ink)}
-textarea{min-height:125px;resize:vertical}
+.choice{border:1px solid var(--line);background:#fff;border-radius:7px;padding:13px;text-align:left;color:var(--ink)}
+.choice:hover{border-color:#86aeb1;background:#f8fbfb}
+.choice.correct{border-color:#83b49a;background:var(--good-soft)}
+.choice.wrong{border-color:#d8a0a0;background:var(--bad-soft)}
+.feedback{margin-top:13px;border:1px solid var(--line);background:#f7f9f9;border-radius:7px;padding:14px}
+.feedback.good{background:var(--good-soft);border-color:#c7dfd0}.feedback.warn{background:var(--warn-soft);border-color:#ead7b5}.feedback.bad{background:var(--bad-soft);border-color:#e5caca}
+.quote{border-left:3px solid #8caeb0;padding:10px 14px;background:#f6f8f8;border-radius:0 6px 6px 0}
+.step{display:flex;gap:10px;margin:10px 0}.circle{min-width:28px;height:28px;border-radius:6px;background:var(--accent-soft);color:var(--accent-dark);display:grid;place-items:center;font-weight:800}
+textarea,input,select{width:100%;padding:11px 12px;border:1px solid #cbd4d9;border-radius:6px;background:#fff;color:var(--ink);outline:none}
+textarea:focus,input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(36,92,99,.11)}
+textarea{min-height:135px;resize:vertical;line-height:1.7}
+label{display:block;margin:10px 0 5px}
 .row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.between{display:flex;justify-content:space-between;gap:15px;align-items:center}
 .bar{display:flex;align-items:center;gap:10px;margin:12px 0}.bar label{width:185px;font-size:13px}.bar .progress{flex:1}
-.tag{display:inline-block;background:#f2f4f7;border-radius:7px;padding:4px 8px;margin:3px;font-size:12px}
-.table{width:100%;border-collapse:collapse}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.table th{background:#f8fafc}
-.sort{padding:12px;border:1.5px solid #e5e7eb;border-radius:10px;background:white;margin:7px 0;cursor:grab}
-.score{font-size:26px;font-weight:850}.hide{display:none!important}
-.toast{position:fixed;right:22px;bottom:22px;background:#172033;color:#fff;border-radius:10px;padding:11px 15px;box-shadow:0 10px 30px #0002;z-index:10}
-.answer{background:#fffdf3;border:1px solid #f4d77d;border-radius:11px;padding:14px}.answer h3{color:#8a5b00}
-.check{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}.checkmark{width:25px;height:25px;border-radius:50%;background:var(--blue-soft);color:#175cd3;display:grid;place-items:center;font-weight:850}
-.rule{border-left:4px solid #b7d5fb;padding:9px 13px;background:#f8fafc;margin:10px 0}
-.small{font-size:13px}.highlight{background:#fff1bf;padding:1px 4px;border-radius:4px}
-footer{margin:26px 0;color:var(--muted);font-size:12px}
-@media(max-width:820px){.app{display:block}.side{position:static;width:100%;height:auto}.main{margin:0;width:100%;padding:18px}.nav{display:grid;grid-template-columns:repeat(2,1fr)}.nav-title{grid-column:1/-1}.top{flex-direction:column}}
+.tag{display:inline-block;background:#f0f3f4;border-radius:4px;padding:3px 7px;margin:3px;font-size:11px;color:#45535c}
+.table{width:100%;border-collapse:collapse}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.table th{background:#f6f8f8}
+.sort{padding:12px;border:1px solid #dfe4e8;border-radius:7px;background:white;margin:7px 0;cursor:grab}
+.score{font-size:26px;font-weight:800}.hide{display:none!important}
+.toast{position:fixed;right:22px;bottom:22px;background:#202a35;color:#fff;border-radius:7px;padding:11px 15px;box-shadow:0 5px 20px #0002;z-index:10}
+.answer{background:#f8f7f2;border:1px solid #e4e0d4;border-radius:7px;padding:14px}.answer h3{color:#6e6045}
+.check{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}.checkmark{width:24px;height:24px;flex:0 0 24px;border-radius:5px;background:var(--accent-soft);color:var(--accent-dark);display:grid;place-items:center;font-weight:800}
+.rule{border-left:3px solid #8caeb0;padding:10px 14px;background:#f6f8f8;margin:12px 0}
+.ai-item{border:1px solid var(--line);border-radius:7px;padding:14px;margin:10px 0;background:#fff}.ai-item h3{margin-bottom:7px}.ai-quote{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#f3f5f6;padding:9px 11px;border-radius:5px;white-space:pre-wrap}.ai-status{padding:12px 14px;border-radius:7px;background:var(--accent-soft);border:1px solid #d7e4e4;margin-top:12px}
+.small{font-size:13px}.highlight{background:#f6edcf;padding:1px 4px;border-radius:3px}
+footer{margin:28px 0;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+@media(max-width:900px){.side{width:225px}.main{margin-left:225px;width:calc(100% - 225px);padding:24px}}
+@media(max-width:720px){.app{display:block}.side{position:static;width:100%;height:auto;padding:14px}.brand{padding-bottom:12px}.nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}.nav-title{grid-column:1/-1}.main{margin:0;width:100%;padding:18px}.top{flex-direction:column}h1{font-size:25px}}
+/* Dark theme: anthracite, muted petrol and high-contrast writing surfaces */
+:root{
+ --bg:#10171d;
+ --card:#19232c;
+ --ink:#e7edf1;
+ --muted:#a5b2bc;
+ --line:#31414c;
+ --accent:#4f9a9b;
+ --accent-soft:#233c41;
+ --accent-dark:#b9dfdc;
+ --good:#80c9a4;
+ --good-soft:#20392f;
+ --warn:#e0b66f;
+ --warn-soft:#3b3020;
+ --bad:#e59a9a;
+ --bad-soft:#3b282c;
+ --shadow:0 8px 28px rgba(0,0,0,.16)
+}
+html{color-scheme:dark}
+body{background:var(--bg);color:var(--ink)}
+::selection{background:#35676a;color:#fff}
+.side{background:#131c23;border-right-color:#2a3943;box-shadow:5px 0 24px rgba(0,0,0,.08)}
+.brand{color:#edf3f6}
+.brand small,.muted{color:var(--muted)}
+.nav-title{color:#82949f}
+.nav button{color:#b6c2ca}
+.nav button:hover{background:#202f38;color:#d8eeec}
+.nav button.active{background:#203a3f;color:#d2efec;box-shadow:inset 2px 0 0 #62b0ae}
+.main{color:var(--ink)}
+h1,h2,h3,h4,strong,b{color:inherit}
+p{color:inherit}
+.pill{background:#26343d;color:#c1cdd4}
+.hero{background:#1b3037;border-color:#2c484e;color:#e6f0f1}
+.hero:before{color:#9dcac7}
+.card,.module,.module:nth-child(n),.ai-item{background:var(--card);border-color:var(--line);box-shadow:var(--shadow)}
+.module .num,.circle,.checkmark{background:#263e43;color:#bfe1df}
+.module.done{border-color:#497f69}
+.module.done .num{background:#20392f;color:#91d7b3}
+.btn{background:#2d7476;border-color:#367e80;color:#f4ffff}
+.btn:hover{background:#398689;border-color:#398689}
+.btn.secondary{background:#202e37;color:#c2e6e3;border-color:#40555f}
+.btn.secondary:hover{background:#293c45}
+.btn.ghost{background:#26323a;color:#d4dde2;border-color:#3a4a54}
+.progress{background:#2c3942}
+.choice{background:#1b2730;border-color:#354651;color:var(--ink)}
+.choice:hover{border-color:#5e9fa0;background:#20333b}
+.choice.correct{border-color:#4f9877;background:#20392f;color:#dcf7e7}
+.choice.wrong{border-color:#a65d64;background:#3b282c;color:#ffe5e5}
+.feedback{background:#1c2932;border-color:#344650;color:var(--ink)}
+.feedback.good{background:var(--good-soft);border-color:#3e7058;color:#e0f5e8}
+.feedback.warn{background:var(--warn-soft);border-color:#6c5732;color:#f5e6c9}
+.feedback.bad{background:var(--bad-soft);border-color:#79474b;color:#ffe5e5}
+.quote,.rule{background:#202e37;border-left-color:#57999b;color:#dce5ea}
+textarea,input,select{background:#111a21;border-color:#3a4b56;color:#e7edf1;caret-color:#8ed4cf}
+textarea::placeholder,input::placeholder{color:#82929c;opacity:1}
+textarea:focus,input:focus,select:focus{border-color:#5ca7a6;box-shadow:0 0 0 3px rgba(79,154,155,.19)}
+select option{background:#19232c;color:#e7edf1}
+.tag{background:#283640;color:#c0cdd4}
+.table th{background:#202e37;color:#dde6eb}
+.table th,.table td{border-bottom-color:#31414c}
+.sort{background:#1c2932;border-color:#364852;color:var(--ink)}
+.toast{background:#0b1116;color:#f1f5f7;border:1px solid #35434c;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.answer{background:#282a26;border-color:#555044;color:#e8e4d8}
+.answer h3{color:#d9c58f}
+.ai-quote{background:#111a21;color:#d8e2e8}
+.ai-status{background:#203a3f;border-color:#355a60;color:#d9eeec}
+.highlight{background:#4a3f20;color:#f4dfa0}
+.check{border-bottom-color:#30414b}
+footer{border-top-color:#30414b;color:#84949f}
+hr{border:0;border-top:1px solid var(--line)}
+a{color:#83c9c5}
+a:hover{color:#b0e2dd}
+button:focus-visible,[role="button"]:focus-visible{outline:2px solid #76c7c2;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="side">
-<div class="brand">Klasse 8 · Deutsch<small>Erörterungen schreiben</small></div>
+<div class="brand">Schreibwerkstatt<small>Deutsch · Jahrgangsstufe 8</small></div>
 <div class="nav">
 <div class="nav-title">Orientieren</div>
-<button data-page="home">🏠 Start</button><button data-page="curriculum">🎯 RLP-Kompass</button><button data-page="operator">🔎 Operator „erörtern“</button><button data-page="map">🗺️ Lernpfad</button>
+<button data-page="series">Unterrichtsreihe</button><button data-page="home">Startseite</button><button data-page="curriculum">Rahmenlehrplan</button><button data-page="operator">Operator „erörtern“</button><button data-page="map">Lernpfad</button>
 <div class="nav-title">Argumentieren lernen</div>
-<button data-page="argument">🧩 Argument-Labor</button><button data-page="battle">⚔️ Argument-Battle</button><button data-page="order">🔀 Argumente ordnen</button><button data-page="language">🗣️ Sprachlabor</button>
+<button data-page="topics">Themenpool</button><button data-page="argument">Argumente entwickeln</button><button data-page="battle">Argumente vergleichen</button><button data-page="order">Argumente ordnen</button><button data-page="language">Sprache und Stil</button>
 <div class="nav-title">Erörterung schreiben</div>
-<button data-page="intro">🚪 Einleitung</button><button data-page="mainpart">🏗️ Hauptteil</button><button data-page="conclusion">🏁 Schluss</button><button data-page="writer">✍️ Schreibwerkstatt</button><button data-page="review">🔎 Überarbeitungscoach</button>
+<button data-page="intro">Einleitung</button><button data-page="mainpart">Hauptteil</button><button data-page="conclusion">Schluss</button><button data-page="practice">Schreibtraining</button><button data-page="writer">Schreibwerkstatt</button><button data-page="review">Text überprüfen</button>
 <div class="nav-title">Klassenmodus</div>
-<button data-page="student">👤 Mein Lernstand</button><button data-page="teacher">📊 Lehrkraft</button>
+<button data-page="student">Mein Lernstand</button><button data-page="teacher">Lehrkraft</button>
 <div class="nav-title">Differenziert üben</div>
-<button data-page="basics">🟢 Grundlagen</button><button data-page="standard">🔵 Standard</button><button data-page="advanced">🟣 Herausforderung</button><button data-page="transfer">🚀 Transfer</button>
+<button data-page="basics">Grundlagen</button><button data-page="standard">Training</button><button data-page="advanced">Vertiefung</button><button data-page="transfer">Transfer</button>
 <div class="nav-title">Üben & sichern</div>
-<button data-page="detective">🕵️ Fehlerdetektiv</button><button data-page="models">📖 Musterlösungen</button><button data-page="challenge">🚀 Abschluss-Challenge</button><button data-page="progress">📈 Fortschritt</button><button data-page="help">💡 Lernhilfe</button>
+<button data-page="detective">Fehlerdetektiv</button><button data-page="models">Musterlösungen</button><button data-page="challenge">Abschlussaufgabe</button><button data-page="progress">Fortschritt</button><button data-page="help">Lernhilfe</button>
 </div></aside>
-<main class="main"><div id="content"></div><footer>Deutschlabor · Klasse 8 · lineare Erörterung · Die Plattform unterstützt den Schreibprozess, ersetzt aber nicht das eigene Schreiben.</footer></main>
+<main class="main"><div id="content"></div><footer>Lineare Erörterung · Jahrgangsstufe 8 · Die Rückmeldungen unterstützen die Überarbeitung, ersetzen aber nicht das eigene Urteil.</footer></main>
 </div><div id="toast" class="toast hide"></div>
 
 <script>
-const defaultState={points:0,done:[],skills:{argument:0,order:0,language:0,structure:0,writing:0},writer:{topic:"Sollte die Schule später beginnen?",position:"",args:["","",""],intro:"",body:"",conclusion:""},ownAttempt:false,modelSeen:false};
+// Für Hosting mit getrenntem Backend kann hier die vollständige URL zur /api/feedback-Funktion eingetragen werden.
+// Beispiel: window.AI_FEEDBACK_ENDPOINT = "https://dein-projekt.vercel.app/api/feedback";
+const topicPool=[
+ {group:"Mobilität",q:"Sollte der öffentliche Nahverkehr für Jugendliche kostenlos sein?",hint:"Denke an Kosten, Selbstständigkeit, Erreichbarkeit und Umwelt."},
+ {group:"Stadtleben",q:"Sollten Städte mehr autofreie Zonen einrichten?",hint:"Berücksichtige Sicherheit, Lärm, Geschäfte und Wege im Alltag."},
+ {group:"Familie und Alltag",q:"Sollten Jugendliche für bestimmte Aufgaben im Haushalt Taschengeld bekommen?",hint:"Unterscheide zwischen gemeinsamer Verantwortung, Anerkennung und Bezahlung."},
+ {group:"Digitales Leben",q:"Sollten Familien einen festen handyfreien Abend pro Woche einführen?",hint:"Denke an gemeinsame Zeit, Erreichbarkeit und persönliche Freiheit."},
+ {group:"Konsum und Umwelt",q:"Sollte man häufiger gebrauchte Kleidung kaufen statt neue?",hint:"Überlege, welche Rolle Preis, Stil, Qualität und Ressourcen spielen."},
+ {group:"Freizeit",q:"Sollten Städte mehr kostenlose Freizeitangebote für Jugendliche schaffen?",hint:"Denke an Teilhabe, Kosten, Interessen und öffentliche Räume."},
+ {group:"Digitales Leben",q:"Sollten Online-Spiele nach längerer Nutzung aktiv eine Pause empfehlen?",hint:"Betrachte Spielspaß, Selbstbestimmung und bewusste Nutzung."},
+ {group:"Konsum und Umwelt",q:"Sollte man kaputte Gegenstände häufiger reparieren statt ersetzen?",hint:"Berücksichtige Kosten, Aufwand, Abfall und den Wert langlebiger Dinge."},
+ {group:"Stadtleben",q:"Sollte es in Wohngebieten mehr Bäume, Sitzplätze und Schatten geben?",hint:"Denke an Aufenthaltsqualität, Hitze, Pflege und verfügbare Flächen."},
+ {group:"Gemeinschaft",q:"Sollten Geburtstagsfeiern bewusst ohne Smartphones stattfinden?",hint:"Überlege, ob das Gespräche stärkt und wie Fotos und Erinnerungen trotzdem möglich bleiben."},
+ {group:"Medien",q:"Sollten Influencer Werbung in ihren Beiträgen besonders deutlich kennzeichnen müssen?",hint:"Denke an Transparenz, Vertrauen und die Freiheit, Inhalte zu gestalten."},
+ {group:"Freizeit",q:"Sollten öffentliche Sport- und Bewegungsangebote kostenlos nutzbar sein?",hint:"Berücksichtige Zugang, Kosten der Stadt, Gesundheit und Pflege der Anlagen."},
+ {group:"Tiere und Verantwortung",q:"Sollten Haustiere nur angeschafft werden, wenn genug Zeit für ihre Betreuung vorhanden ist?",hint:"Denke an Tierwohl, Verantwortung im Alltag und die Situation der Familie."},
+ {group:"Essen und Gesundheit",q:"Sollten Städte mehr günstige und gesunde Essensangebote für Jugendliche fördern?",hint:"Berücksichtige Preis, Geschmack, Gesundheit und die Verantwortung der Anbieter."},
+ {group:"Musik und Kultur",q:"Sollten Konzerte und Kulturveranstaltungen für Jugendliche günstiger sein?",hint:"Überlege, wer Zugang zu Kultur haben sollte und wie Veranstaltungen finanziert werden können."},
+ {group:"Sport",q:"Sollten große Sportveranstaltungen stärker auf Umwelt und Nachhaltigkeit achten müssen?",hint:"Denke an Anreise, Müll, Kosten und die Bedeutung solcher Veranstaltungen."},
+ {group:"Reisen",q:"Sollten Jugendliche bei Bahnreisen innerhalb Deutschlands besonders günstige Tickets bekommen?",hint:"Beziehe Kosten, Selbstständigkeit, Klimaschutz und Finanzierung ein."},
+ {group:"Geld und Konsum",q:"Sollten Jugendliche in der Werbung besser vor Kaufdruck geschützt werden?",hint:"Denke an Influencer, Marken, Gruppendruck und die eigene Entscheidungsfreiheit."},
+ {group:"Mode",q:"Sollten große Modeunternehmen stärker für die Haltbarkeit ihrer Kleidung verantwortlich sein?",hint:"Berücksichtige Qualität, Preise, Arbeitsbedingungen und Abfall."},
+ {group:"Digitale Medien",q:"Sollten Plattformen endloses Scrollen durch regelmäßige Hinweise unterbrechen?",hint:"Überlege, wie Aufmerksamkeit funktioniert und wo Selbstbestimmung beginnt."},
+ {group:"Freundschaft und Gemeinschaft",q:"Sollten Freundesgruppen gemeinsame Regeln für Fotos und Videos vereinbaren?",hint:"Denke an Privatsphäre, Erinnerungen, Einverständnis und Gruppendruck."},
+ {group:"Stadt und Begegnung",q:"Sollten Städte mehr öffentliche Orte schaffen, an denen Jugendliche sich ohne Konsumzwang treffen können?",hint:"Berücksichtige Platz, Lärm, Sicherheit und die Bedürfnisse verschiedener Gruppen."},
+ {group:"Umwelt",q:"Sollten Geschäfte für mitgebrachte Mehrwegbehälter einen kleinen Rabatt geben?",hint:"Denke an Müllvermeidung, Aufwand für Geschäfte und tatsächliche Wirkung."},
+ {group:"Künstliche Intelligenz",q:"Sollten KI-generierte Bilder und Videos immer gekennzeichnet werden müssen?",hint:"Berücksichtige Transparenz, Kreativität, Täuschungsgefahr und Verantwortung."},
+ {group:"Freizeit und Medien",q:"Sollten Streamingdienste bei Serien automatisch nach einer Folge nachfragen, ob man weiterschauen möchte?",hint:"Überlege, wie bequemes Schauen, Zeitplanung und bewusste Entscheidungen zusammenhängen."}
+];
+const defaultState={points:0,done:[],skills:{argument:0,order:0,language:0,structure:0,writing:0},writer:{topic:topicPool[0].q,position:"",args:["","",""],intro:"",body:"",conclusion:""},practice:{task:topicPool[4].q,claim:"",reason:"",example:"",paragraph:"",revision:""},ownAttempt:false,modelSeen:false};
 let S=JSON.parse(localStorage.getItem("deutschlabor_rlp")||"null")||structuredClone(defaultState);
+// Ältere gespeicherte Standardthemen werden auf alltagsnahe Schreibaufgaben umgestellt.
+const oldSchoolTopics=["Sollte die Schule später beginnen?","Sollte es weniger Hausaufgaben geben?","Sollten Hausaufgaben reduziert werden?","Sollten Handys im Unterricht erlaubt sein?","Sollte es mehr Projekttage geben?","Sollten Schulnoten abgeschafft werden?"];
+if(!S.writer) S.writer=structuredClone(defaultState.writer);
+if(!S.practice) S.practice=structuredClone(defaultState.practice);
+if(!S.writer.topic||oldSchoolTopics.includes(S.writer.topic)) S.writer.topic=topicPool[0].q;
+if(!S.practice.task||oldSchoolTopics.includes(S.practice.task)) S.practice.task=topicPool[4].q;
 function save(){localStorage.setItem("deutschlabor_rlp",JSON.stringify(S))}
 function toast(x){let e=document.getElementById("toast");e.textContent=x;e.classList.remove("hide");setTimeout(()=>e.classList.add("hide"),2200)}
 function done(id,pts=10){if(!S.done.includes(id)){S.done.push(id);S.points+=pts;save();toast("Station geschafft! +"+pts+" Punkte")}}
 function nav(p){document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===p));window.scrollTo(0,0);render(p)}
 document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>nav(b.dataset.page))
-function shell(t,s){return `<div class="top"><div><h1>${t}</h1><div class="muted">${s}</div></div><div class="pill">⭐ ${S.points} Punkte</div></div>`}
+function shell(t,s){return `<div class="top"><div><h1>${t}</h1><div class="muted">${s}</div></div><div class="pill">${S.done.length} Lernschritte abgeschlossen</div></div>`}
 const modules=[["argument","1","Argument-Labor","Behauptung, Begründung und Beispiel unterscheiden und verbinden."],["battle","2","Argument-Battle","Qualität von Argumenten vergleichen."],["order","3","Argumente ordnen","Argumente sinnvoll steigern."],["language","4","Sprachlabor","Satzverknüpfungen und sachliche Sprache nutzen."],["intro","5","Einleitung","Thema, Anlass und Fragestellung verbinden."],["mainpart","6","Hauptteil","Argumente entfalten und folgerichtig verbinden."],["conclusion","7","Schluss","Ergebnis, Stellungnahme und Ausblick formulieren."],["writer","8","Schreibwerkstatt","Eine eigene lineare Erörterung schreiben."],["review","9","Überarbeitungscoach","Den eigenen Text anhand von Kriterien überarbeiten."],["challenge","10","Abschluss-Challenge","Selbstständig argumentieren und schreiben."],["basics","A","Grundlagen","Hilfen, Satzbausteine und stark geführte Übungen."],["standard","B","Standard","Selbstständige Aufgaben auf dem Kernniveau."],["advanced","C","Herausforderung","Komplexere Argumentation, Überarbeitung und Transfer."],["transfer","D","Transfer","Neue Themen ohne vorgegebene Lösung bearbeiten."]];
 
 function home(c){let p=Math.round(S.done.length/14*100);c.innerHTML=shell("Erörterungen schreiben","Verstehen. Argumentieren. Überzeugen.");
 c.innerHTML+=`<div class="hero"><h2>Erörterungen schreiben</h2><h3>Verstehen. Argumentieren. Überzeugen.</h3><p>Die Lernplattform folgt dem Schreibprozess: <b>verstehen → planen → formulieren → überarbeiten → reflektieren</b>. Spiele helfen beim Üben, aber der Kern ist dein eigener Text.</p><div class="progress"><div style="width:${p}%"></div></div><p class="small">${S.done.length}/14 Lernbereiche abgeschlossen · ${p}%</p><div class="row"><button class="btn" onclick="nav('${S.done.length?modules.find(m=>!S.done.includes(m[0]))?.[0]||'challenge':'operator'}')">${S.done.length?"Weiterlernen":"Starten"} →</button><button class="btn secondary" onclick="nav('curriculum')">Warum diese Inhalte? →</button></div></div>`;
 c.innerHTML+=`<div class="grid">${modules.map(m=>`<div class="card module ${S.done.includes(m[0])?'done':''}"><div class="num">${m[1]}</div><h3>${m[2]} ${S.done.includes(m[0])?'✓':''}</h3><p class="muted">${m[3]}</p><button class="btn secondary" onclick="nav('${m[0]}')">${S.done.includes(m[0])?'Wiederholen':'Starten'} →</button></div>`).join("")}</div>`}
+
+function series(c){
+const lessons=[
+[1,"Einstieg: Was heißt erörtern?","Vorwissen aktivieren und den Operator erörtern verstehen.","Start → Operator erörtern → kurze Entscheidungsspiele → eigene Definition → Mini-Reflexion","Noch keine vollständige Erörterung. Die SuS formulieren in eigenen Worten, was beim Erörtern geleistet werden muss.","Ergebnis: eine eigene, verständliche Operator-Definition."],
+[2,"Vom Thema zur Streitfrage","Ein Thema in eine klare, erörterbare Frage überführen und eine erste Position entwickeln.","Lernpfad → Themen prüfen → Argument-Labor → Position begründen","Die SuS schreiben mindestens eine eigene These und begründen sie mit einem vollständigen Argument.","Lehrkraft sammelt typische zu breite/zu enge Fragestellungen."],
+[3,"Was macht ein gutes Argument aus?","Behauptung, Begründung und Beispiel unterscheiden, verbinden und bewerten.","Argument-Labor → Argument-Battle → Fehlerdetektiv","Eigenes Argument schreiben, anschließend anhand eines Kriterienrasters verbessern.","Fokus: Logik und Zusammenhang statt bloßer Satzlänge."],
+[4,"Argumente sammeln und ordnen","Mehrere Argumente entwickeln und sinnvoll steigern.","Argumente ordnen → Sprachlabor → differenzierte Aufgaben","Mindestens drei eigene Argumente sammeln und begründet ordnen.","Bei Unsicherheit: Grundlagen; bei Sicherheit: Herausforderung mit schwachen Gegenpositionen."],
+[5,"Die lineare Erörterung bauen","Aufbau von Einleitung, Hauptteil und Schluss verstehen und planen.","Einleitung → Hauptteil → Schluss → Schreibplan","Noch nicht den ganzen Aufsatz schreiben: zuerst eine eigene Gliederung und Argumentationskette erstellen.","Lehrkraft prüft Planung vor dem Ausformulieren."],
+[6,"Schreiben: mein eigener Text","Eine vollständige lineare Erörterung selbstständig verfassen.","Schreibwerkstatt → eigener Schreibprozess → optionale Musterlösung erst danach","Die Schreibfläche ist der Kern der Stunde. Musterlösungen bleiben zunächst geschlossen.","Bewusst Zeit für Formulieren und Nachdenken einplanen."],
+[7,"Überarbeiten ist Schreiben","Den eigenen Text mit Kriterien prüfen und gezielt verbessern.","Überarbeitungscoach → Fehlerdetektiv → eigener Text → zweiter Entwurf","Mindestens drei konkrete Überarbeitungen am eigenen Text vornehmen und begründen.","Nicht nur Rechtschreibung: Argumentqualität, Struktur, Kohärenz und sprachliche Präzision."],
+[8,"Transfer und Reflexion","Erworbene Strategien auf ein neues Thema übertragen und den eigenen Lernweg reflektieren.","Transfer → Abschluss-Challenge → Fortschritt → Lernreflexion","Neue lineare Erörterung ohne vorgegebene Musterformulierungen schreiben.","Abschluss: Was kann ich jetzt beim Erörtern selbstständig? Was ist mein nächster Schritt?"]
+]
+c.innerHTML=shell("Unterrichtsreihe","8 Unterrichtsstunden · vom Operator zur eigenen linearen Erörterung");
+c.innerHTML+=`<div class="hero"><h2>Die Reihe: selbst schreiben statt nachbauen</h2><p>Die Plattform ist als <b>Schreiblernprozess</b> gedacht. Jede Stunde führt von einer kleinen, überschaubaren Entscheidung zu einer eigenen sprachlichen Leistung. Musterlösungen dienen zur Kontrolle und Reflexion – nicht als Vorlage zum Abschreiben.</p><div class="row"><span class="pill">8 Stunden</span><span class="pill">eigene Texte</span><span class="pill">Differenzierung</span><span class="pill">Überarbeitung</span></div></div>`;
+lessons.forEach((l,i)=>{c.innerHTML+=`<div class="card"><div class="between"><div><span class="pill">Stunde ${l[0]}</span><h2>${l[1]}</h2></div><button class="btn secondary" onclick="nav('${['operator','argument','battle','order','mainpart','writer','review','transfer'][i]}')">Passende Station →</button></div><p><b>Ziel:</b> ${l[2]}</p><p><b>Plattform:</b> ${l[3]}</p><p><b>Eigenes Schreiben:</b> ${l[4]}</p><p><b>Lehrkraft-Hinweis:</b> ${l[5]}</p></div>`});
+c.innerHTML+=`<div class="card"><h2>Vorschlag für eine 90-Minuten-Stunde</h2><table class="table"><tr><th>Phase</th><th>Zeit</th><th>Prinzip</th></tr><tr><td>Einstieg</td><td>10 Min.</td><td>Problem, Beispiel oder kurze Entscheidung</td></tr><tr><td>Erarbeitung</td><td>20–25 Min.</td><td>Interaktive Station + Austausch</td></tr><tr><td>Eigene Anwendung</td><td>30–35 Min.</td><td>Schülerinnen und Schüler schreiben selbst</td></tr><tr><td>Überarbeitung / Vergleich</td><td>15 Min.</td><td>Kriterien anwenden, Partnerfeedback oder Musterlösung</td></tr><tr><td>Reflexion</td><td>5–10 Min.</td><td>Was kann ich jetzt besser?</td></tr></table></div>`;
+}
 
 function curriculum(c){c.innerHTML=shell("RLP-Kompass","Warum die Lernplattform genau so aufgebaut ist.");
 c.innerHTML+=`<div class="card"><h2>Ausgangspunkt: Klasse 8 am Gymnasium</h2><p>Im Fachteil C Deutsch ist für das Gymnasium der Jahrgangsstufe 8 die <b>Niveaustufe F</b> ausgewiesen. Die Plattform verbindet deshalb Grundlagen der Argumentation mit dem zunehmend selbstständigen Planen, Formulieren und Überarbeiten eigener Texte.</p></div>
@@ -124,86 +259,231 @@ c.innerHTML+=`<div class="card"><span class="pill">MERKSATZ</span><h2>Erörtern 
 ["4. Argumente gewichten","Welche Gründe sind eher schwach, welche stark? Ordne sie sinnvoll – bei der linearen Erörterung meist steigernd."],
 ["5. Argumente entfalten","Jedes zentrale Argument braucht mindestens Behauptung + Begründung + Beispiel/Beleg."],
 ["6. Ergebnis ziehen","Formuliere am Ende klar, was sich aus deiner Argumentation ergibt."]].map(x=>`<div class="step"><div class="circle">${x[0].split(".")[0]}</div><div><b>${x[0].slice(3)}</b><div class="muted">${x[1]}</div></div></div>`).join("")}</div>
-<div class="card"><h2>Was „erörtern“ in dieser Plattform konkret bedeutet</h2><div class="rule"><b>Aufgabe:</b> Erörtere, ob die Schule später beginnen sollte.</div><p><span class="highlight">Nicht ausreichend:</span> „Ich finde, die Schule sollte später beginnen, weil das besser wäre.“</p><p><span class="highlight">Erörternd:</span> Du entwickelst mehrere nachvollziehbare Gründe, erklärst ihre Zusammenhänge, ordnest sie und führst sie zu einem begründeten Ergebnis.</p><p class="small muted">Hinweis: In höheren Jahrgangsstufen kann „erörtern“ je nach Aufgabenstellung ausdrücklich das Abwägen unterschiedlicher Positionen verlangen. Diese Plattform trainiert zunächst die <b>lineare Erörterung</b> nach dem vorliegenden Unterrichtsmaterial.</p></div>
+<div class="card"><h2>Was „erörtern“ in dieser Plattform konkret bedeutet</h2><div class="rule"><b>Aufgabe:</b> Erörtere, ob der öffentliche Nahverkehr für Jugendliche kostenlos sein sollte.</div><p><span class="highlight">Nicht ausreichend:</span> „Ich finde, Busse sollten kostenlos sein, weil das besser wäre.“</p><p><span class="highlight">Erörternd:</span> Du entwickelst mehrere nachvollziehbare Gründe, erklärst ihre Zusammenhänge, ordnest sie und führst sie zu einem begründeten Ergebnis.</p><p class="small muted">Hinweis: In höheren Jahrgangsstufen kann „erörtern“ je nach Aufgabenstellung ausdrücklich das Abwägen unterschiedlicher Positionen verlangen. Diese Plattform trainiert zunächst die <b>lineare Erörterung</b> nach dem vorliegenden Unterrichtsmaterial.</p></div>
 <div class="card"><h2>Anforderungsbereiche</h2><table class="table"><tr><th>AB I</th><th>AB II</th><th>AB III</th></tr><tr><td>Bekanntes wiedergeben, geübte Verfahren anwenden.</td><td>Bekannte Verfahren selbstständig anwenden, ordnen, erklären und übertragen.</td><td>Komplexe Sachverhalte selbstständig bewerten, begründen und zu eigenen Lösungen gelangen.</td></tr></table><p class="small muted">Die Plattform führt von stark angeleiteten Aufgaben zu zunehmend selbstständigem Schreiben.</p></div>`}
 
 function map(c){c.innerHTML=shell("Lernpfad","Jede Station baut auf einer Schreibhandlung auf.");
 c.innerHTML+=`<div class="card"><h2>Der Schreibprozess</h2><div class="grid">${modules.map(m=>`<div class="card module ${S.done.includes(m[0])?'done':''}"><div class="num">${m[1]}</div><h3>${m[2]} ${S.done.includes(m[0])?'✓':''}</h3><p class="muted">${m[3]}</p><button class="btn secondary" onclick="nav('${m[0]}')">Öffnen →</button></div>`).join("")}</div></div>`}
 
+function topics(c){
+c.innerHTML=shell("Themenpool","Erörtern beginnt mit einer Frage, zu der man begründete Positionen entwickeln kann.");
+c.innerHTML+=`<div class="hero"><h2>Nicht nur Schule: Themen aus deinem Alltag</h2><p>Wähle eine Streitfrage, zu der du etwas sagen kannst. Entscheidend ist nicht, welche Meinung du hast, sondern ob du sie mit nachvollziehbaren Argumenten, Begründungen und Beispielen stützt.</p><div class="row"><span class="pill">Alltag</span><span class="pill">Freizeit</span><span class="pill">Medien</span><span class="pill">Umwelt</span><span class="pill">Stadtleben</span><span class="pill">Tiere</span><span class="pill">Sport</span><span class="pill">Konsum</span><span class="pill">Kultur</span><span class="pill">KI</span></div></div>`;
+c.innerHTML+=`<div class="grid">${topicPool.map((t,i)=>`<div class="card module"><span class="pill">${t.group}</span><h3 style="margin-top:10px">${t.q}</h3><p class="muted">${t.hint}</p><button class="btn secondary" onclick="chooseTopic(${i})">Thema übernehmen →</button></div>`).join("")}</div>`;
+c.innerHTML+=`<div class="card"><h2>So gehst du vor</h2><p><b>1.</b> Entscheide dich für eine Position. <b>2.</b> Sammle mindestens drei unterschiedliche Gründe. <b>3.</b> Erkläre jeden Grund und mache ihn möglichst konkret. <b>4.</b> Ordne deine Argumente vom weniger starken zum überzeugendsten. <b>5.</b> Schreibe Einleitung, Hauptteil und Schluss und überarbeite anschließend deinen Text.</p></div>`;
+}
+function chooseTopic(i){const t=topicPool[i];if(!t)return;S.practice.task=t.q;S.writer.topic=t.q;save();nav('practice');}
+
 let argOrder=[];
 function argument(c){argOrder=[];c.innerHTML=shell("Argument-Labor","Ein Argument wird nicht nur behauptet, sondern entfaltet.");
-c.innerHTML+=`<div class="card"><h2>Argument-Puzzle</h2><p><b>Thema:</b> Sollte die Schule später beginnen?</p><p>Klicke <b>Behauptung → Begründung → Beispiel</b> an.</p><div class="choicegrid">${[
-["B","Ein späterer Schulbeginn könnte die Konzentration verbessern."],["G","Wer ausreichend Schlaf bekommt, kann im Unterricht oft aufmerksamer arbeiten."],["E","Zum Beispiel könnte eine ausgeschlafene Klasse morgens besser bei einer anspruchsvollen Aufgabe mitarbeiten."]
+c.innerHTML+=`<div class="card"><h2>Argument-Puzzle</h2><p><b>Thema:</b> Sollte der öffentliche Nahverkehr für Jugendliche kostenlos sein?</p><p>Klicke <b>Behauptung → Begründung → Beispiel</b> an.</p><div class="choicegrid">${[
+["B","Kostenloser Nahverkehr könnte Jugendlichen mehr Selbstständigkeit ermöglichen."],["G","Wenn Busse und Bahnen nichts kosten, hängt eine Fahrt weniger davon ab, wie viel Geld eine Familie dafür übrig hat."],["E","So könnten Jugendliche zum Beispiel selbstständig zu einem Sportangebot oder in die Bibliothek fahren, ohne dass der Ticketpreis sie davon abhält."]
 ].map((x,i)=>`<button class="choice" onclick="argPick(${i},this)"><b>${x[0]}</b><br>${x[1]}</button>`).join("")}</div><div id="argF"></div></div>`}
 function argPick(i,e){let ex=[0,1,2];if(i===ex[argOrder.length]){argOrder.push(i);e.classList.add("correct");if(argOrder.length===3){S.skills.argument=100;done("argument",20);document.getElementById("argF").innerHTML=`<div class="feedback good"><b>Musterlösung:</b> Behauptung → Begründung → Beispiel. Ein Beispiel macht den allgemeinen Gedanken anschaulich.</div>`;save()}}else{e.classList.add("wrong");document.getElementById("argF").innerHTML=`<div class="feedback warn">Überlege: Was ist deine Aussage? Warum gilt sie? Woran könnte man sie konkret erkennen?</div>`}}
 
 let battleRound=0,battleScore=0;const battles=[
-["Welche Begründung überzeugt stärker?","„Ein späterer Schulbeginn wäre gut, weil ich morgens keine Lust habe.“","„Ein späterer Schulbeginn könnte sinnvoll sein, weil Jugendliche häufig mehr Schlaf benötigen und dadurch ausgeruhter in den Unterricht starten könnten.“"],
-["Welches Beispiel ist konkreter?","„Schule ist manchmal anstrengend.“","„Wenn eine Klasse nach einer kurzen Nacht in der ersten Stunde eine komplexe Aufgabe bearbeiten muss, kann fehlende Konzentration die Arbeit erschweren.“"],
-["Welches Argument ist am stärksten entfaltet?","„Projekttage sind gut.“","„Projekttage ermöglichen es, ein Thema über mehrere Stunden praktisch zu untersuchen und dabei Zusammenarbeit zu trainieren.“"]];
-function battle(c){let b=battles[battleRound%3];c.innerHTML=shell("Argument-Battle","Vergleiche die Qualität der Argumente – nicht nur deine persönliche Meinung.");
-c.innerHTML+=`<div class="card"><span class="pill">Runde ${battleRound%3+1}/3</span><h2>${b[0]}</h2><div class="choicegrid"><button class="choice" onclick="bp(0,this)">${b[1]}</button><button class="choice" onclick="bp(1,this)">${b[2]}</button></div><div id="bf"></div></div>`}
-function bp(i,e){if(i===1){e.classList.add("correct");battleScore++;document.getElementById("bf").innerHTML=`<div class="feedback good">Richtig. Das zweite Beispiel ist konkreter bzw. besser begründet.</div>`}else{e.classList.add("wrong");document.getElementById("bf").innerHTML=`<div class="feedback warn">Achte auf die Begründung und den konkreten Nachweis. „Ich finde …“ allein macht ein Argument nicht stark.</div>`}setTimeout(()=>{battleRound++;if(battleRound%3===0){S.skills.argument=Math.max(S.skills.argument,90);done("battle",25);save();}nav("battle")},700)}
+["Welche Begründung überzeugt stärker?","„Kostenloser Nahverkehr wäre gut, weil ich dann Geld spare.“","„Kostenloser Nahverkehr könnte Jugendlichen mehr Möglichkeiten eröffnen, weil Fahrkosten sonst darüber entscheiden können, ob sie Freunde, Sportangebote oder kulturelle Orte erreichen."],
+["Welches Beispiel ist konkreter?","„Secondhand ist besser für die Umwelt.“","„Wenn eine Jacke weitergetragen statt ersetzt wird, muss für diese Person keine neue Jacke hergestellt und transportiert werden; so können Ressourcen eingespart werden."],
+["Welches Argument ist am stärksten entfaltet?","„Mehr Bänke in Parks sind gut.“","„Mehr Sitzplätze und Bäume können öffentliche Plätze für unterschiedliche Menschen nutzbar machen, weil sie Erholung und Schatten bieten und Begegnungen erleichtern."]];
+function battle(c){let b=battles[battleRound%3];c.innerHTML=shell("Argument-Battle","Vergleiche die Qualität von Argumenten aus unterschiedlichen Alltagsthemen.");
+c.innerHTML+=`<div class="card"><span class="pill">Runde ${battleRound%3+1}/3</span><h2>${b[0]}</h2><div class="choicegrid"><button class="choice" onclick="bp(0,this)">${b[1]}</button><button class="choice" onclick="bp(1,this)">${b[2]}</button></div><div id="bf"></div></div>`}function bp(i,e){if(i===1){e.classList.add("correct");battleScore++;document.getElementById("bf").innerHTML=`<div class="feedback good">Richtig. Das zweite Argument ist konkreter bzw. besser begründet.</div>`}else{e.classList.add("wrong");document.getElementById("bf").innerHTML=`<div class="feedback warn">Achte auf die Begründung und den konkreten Nachweis. „Ich finde …“ allein macht ein Argument nicht stark.</div>`}setTimeout(()=>{battleRound++;if(battleRound%3===0){S.skills.argument=Math.max(S.skills.argument,90);done("battle",25);save();}nav("battle")},700)}
 
 function order(c){c.innerHTML=shell("Argumente ordnen","Eine lineare Erörterung steigert die Wirkung ihrer Argumente.");
-c.innerHTML+=`<div class="card"><h2>Sortier-Challenge</h2><p>Ordne vom eher allgemeinen zum stärksten Argument.</p><div id="sort">${["Mehr Zeit am Morgen könnte den Schulweg entspannter machen.","Ein späterer Beginn könnte die Konzentration verbessern.","Jugendliche haben häufig einen verschobenen Schlafrhythmus; mehr Schlaf kann deshalb ihre Erholung fördern."].map((x,i)=>`<div class="sort" draggable="true" data-i="${i}">${x}</div>`).join("")}</div><button class="btn" onclick="checkOrder()">Prüfen</button><div id="of"></div></div>`;setTimeout(drag,0)}
+c.innerHTML+=`<div class="card"><h2>Sortier-Challenge</h2><p><b>Thema:</b> Sollte man kaputte Gegenstände häufiger reparieren statt ersetzen?</p><p>Ordne vom einfachsten zum stärksten Argument. Ziehe die Bausteine in eine sinnvolle Reihenfolge.</p><div id="sort">${[
+[2,"Wenn ein Gegenstand repariert und länger genutzt wird, können Rohstoffe, Energie und Transport für einen Neukauf eingespart werden."],
+[0,"Reparieren kann günstiger sein als ein neuer Kauf."],
+[1,"Wer Dinge länger verwendet, produziert häufig weniger Abfall."]
+].map(([i,x])=>`<div class="sort" draggable="true" data-i="${i}">${x}</div>`).join("")}</div><button class="btn" onclick="checkOrder()">Prüfen</button><div id="of"></div></div>`;setTimeout(drag,0)}
 function drag(){let box=document.getElementById("sort"),d=null;box.querySelectorAll(".sort").forEach(x=>{x.ondragstart=()=>{d=x;x.classList.add("dragging")};x.ondragend=()=>x.classList.remove("dragging");x.ondragover=e=>{e.preventDefault();if(x!==d){let r=x.getBoundingClientRect();box.insertBefore(d,e.clientY<r.top+r.height/2?x:x.nextSibling)}}})}
-function checkOrder(){let ids=[...document.querySelectorAll(".sort")].map(x=>x.dataset.i).join("");let f=document.getElementById("of");if(ids==="012"){S.skills.order=100;done("order",20);f.innerHTML=`<div class="feedback good"><b>Musterlösung:</b> 0 → 1 → 2. Das dritte Argument liefert die stärkste inhaltliche Begründung.</div>`}else f.innerHTML=`<div class="feedback warn">Tipp: Steigere die Überzeugungskraft. Welches Argument erklärt am genauesten, warum die Position sinnvoll ist?</div>`;save()}
+function checkOrder(){let ids=[...document.querySelectorAll(".sort")].map(x=>x.dataset.i).join("");let f=document.getElementById("of");if(ids==="012"){S.skills.order=100;done("order",20);f.innerHTML=`<div class="feedback good"><b>Musterlösung:</b> 0 → 1 → 2. Erst kommt der direkte Kostenvorteil, dann die Abfallvermeidung und schließlich die genauere Erklärung, welche Ressourcen beim Reparieren geschont werden können.</div>`}else f.innerHTML=`<div class="feedback warn">Tipp: Steigere die Überzeugungskraft. Welches Argument erklärt am genauesten, warum die Position sinnvoll ist?</div>`;save()}
 
 function language(c){c.innerHTML=shell("Sprachlabor","Sachlich, abwechslungsreich und logisch verknüpfen.");
-c.innerHTML+=`<div class="card"><h2>Verknüpfungswort-Quiz</h2><p>„Ein späterer Schulbeginn könnte die Konzentration verbessern. ___ könnten Jugendliche ausgeruhter sein.“</p><div class="choicegrid">${["Außerdem","Zum Beispiel","Obwohl","Trotzdem"].map((x,i)=>`<button class="choice" onclick="lang(${i},this)">${x}</button>`).join("")}</div><div id="lf"></div></div>
+c.innerHTML+=`<div class="card"><h2>Verknüpfungswort-Quiz</h2><p>„Kostenloser Nahverkehr könnte Jugendlichen mehr Möglichkeiten eröffnen. ___ würde er Familien finanziell entlasten.“</p><div class="choicegrid">${["Außerdem","Zum Beispiel","Obwohl","Trotzdem"].map((x,i)=>`<button class="choice" onclick="lang(${i},this)">${x}</button>`).join("")}</div><div id="lf"></div></div>
 <div class="card"><h2>Sprachwerkzeugkasten</h2><p><b>Ergänzen:</b> außerdem · darüber hinaus · deshalb · daher · zum Beispiel · beispielsweise · weil · denn</p><p class="small">Achte auf Variation. Eine Erörterung soll sachlich und gut lesbar sein.</p></div>`}
-function lang(i,e){if(i===0){e.classList.add("correct");S.skills.language=100;done("language",15);document.getElementById("lf").innerHTML=`<div class="feedback good"><b>Musterlösung:</b> „Außerdem“ fügt einen weiteren Gedanken hinzu.</div>`}else{e.classList.add("wrong");document.getElementById("lf").innerHTML=`<div class="feedback warn">Gesucht ist eine Verbindung, die einen weiteren Gedanken hinzufügt.</div>`}save()}
+function lang(i,e){if(i===0){e.classList.add("correct");S.skills.language=100;done("language",15);document.getElementById("lf").innerHTML=`<div class="feedback good"><b>Musterlösung:</b> „Außerdem“ fügt einen weiteren Gedanken hinzu und passt hier zur zweiten Folge.</div>`}else{e.classList.add("wrong");document.getElementById("lf").innerHTML=`<div class="feedback warn">Gesucht ist eine Verbindung, die einen weiteren Gedanken hinzufügt.</div>`}save()}
 
-function intro(c){c.innerHTML=shell("Einleitung","Eine Einleitung führt zum Thema und zur Fragestellung.");
-c.innerHTML+=`<div class="card"><h2>Erkennen</h2><p><b>Thema:</b> Sollte die Schule später beginnen?</p><div class="choicegrid">${["„Schule morgens ist echt nervig.“","„Für viele Jugendliche beginnt der Schultag sehr früh. Deshalb stellt sich die Frage, ob ein späterer Unterrichtsbeginn sinnvoll wäre.“","„Schule ist eine Institution des Bildungssystems und beginnt traditionell am Morgen.“"].map((x,i)=>`<button class="choice" onclick="ip(${i},this)">${x}</button>`).join("")}</div><div id="if"></div></div>
-<div class="card"><h2>Selbst schreiben</h2><p>Schreibe jetzt eine eigene Einleitung für dasselbe Thema. <b>Nicht kopieren.</b></p><textarea id="introOwn" placeholder="Deine eigene Einleitung …"></textarea><button class="btn good" style="margin-top:10px" onclick="saveIntro()">Einleitung speichern</button><div id="iof"></div></div>`}
-function ip(i,e){if(i===1){e.classList.add("correct");done("intro",15);document.getElementById("if").innerHTML=`<div class="feedback good">Musterlösung: sachlicher Einstieg + Überleitung + Fragestellung.</div>`}else{e.classList.add("wrong");document.getElementById("if").innerHTML=`<div class="feedback warn">Eine gute Einleitung soll nicht schon die ganze Argumentation vorwegnehmen. Sie führt sachlich zum Thema und zur Frage.</div>`}}
+function intro(c){c.innerHTML=shell("Einleitung","Eine Einleitung führt vom Thema zur klaren Fragestellung.");
+c.innerHTML+=`<div class="card"><h2>Erkennen</h2><p><b>Thema:</b> Sollte man häufiger gebrauchte Kleidung kaufen statt neue?</p><div class="choicegrid">${["„Secondhand ist voll cool und neue Sachen sind doof.“","„Kleidung wird häufig nach kurzer Zeit ersetzt, obwohl sie noch in gutem Zustand ist. Deshalb stellt sich die Frage, ob man häufiger gebrauchte Kleidung kaufen sollte.“","„Kleidung ist ein Gegenstand, der den Körper bedeckt und in unterschiedlichen Geschäften erworben werden kann.“"].map((x,i)=>`<button class="choice" onclick="ip(${i},this)">${x}</button>`).join("")}</div><div id="if"></div></div>
+<div class="card"><h2>Selbst schreiben</h2><p>Schreibe jetzt eine eigene Einleitung zur Frage nach gebrauchter Kleidung. Nutze einen sachlichen Einstieg und formuliere die Fragestellung. <b>Nicht kopieren.</b></p><textarea id="introOwn" placeholder="Deine eigene Einleitung …"></textarea><button class="btn good" style="margin-top:10px" onclick="saveIntro()">Einleitung speichern</button><div id="iof"></div></div>`}function ip(i,e){if(i===1){e.classList.add("correct");done("intro",15);document.getElementById("if").innerHTML=`<div class="feedback good">Musterlösung: sachlicher Einstieg + Überleitung + Fragestellung.</div>`}else{e.classList.add("wrong");document.getElementById("if").innerHTML=`<div class="feedback warn">Eine gute Einleitung soll nicht schon die ganze Argumentation vorwegnehmen. Sie führt sachlich zum Thema und zur Frage.</div>`}}
 function saveIntro(){let x=document.getElementById("introOwn").value.trim();let f=document.getElementById("iof");if(x.length>=40){S.writer.intro=x;S.ownAttempt=true;save();f.innerHTML=`<div class="feedback good">Gespeichert. Jetzt kannst du später mit der Musterlösung vergleichen.</div>`}else f.innerHTML=`<div class="feedback warn">Schreibe mindestens ein paar vollständige Sätze und führe erkennbar zur Fragestellung hin.</div>`}
 
 function mainpart(c){c.innerHTML=shell("Hauptteil","Hier zeigt sich die eigentliche Argumentationsleistung.");
-c.innerHTML+=`<div class="card"><h2>Das Grundmuster</h2><div class="grid"><div class="card"><h3>1 · Behauptung</h3><p>„Ein späterer Schulbeginn könnte die Konzentration verbessern.“</p></div><div class="card"><h3>2 · Begründung</h3><p>„Wer ausreichend Schlaf bekommt, kann morgens oft aufmerksamer arbeiten.“</p></div><div class="card"><h3>3 · Beispiel</h3><p>„Das zeigt sich etwa, wenn eine Klasse in der ersten Stunde eine anspruchsvolle Aufgabe bearbeiten muss.“</p></div></div></div>
-<div class="card"><h2>Eigener Absatz</h2><p>Formuliere selbst einen Argumentationsabsatz zum Thema <b>„Sollte es mehr Projekttage geben?“</b>. Nutze Behauptung, Begründung und Beispiel.</p><textarea id="mp" placeholder="Dein eigener Argumentationsabsatz …"></textarea><button class="btn good" style="margin-top:10px" onclick="saveMain()">Speichern & prüfen</button><div id="mpf"></div></div>`}
+c.innerHTML+=`<div class="card"><h2>Das Grundmuster</h2><p><b>Thema:</b> Sollten Städte mehr kostenlose Freizeitangebote für Jugendliche schaffen?</p><div class="grid"><div class="card"><h3>1 · Behauptung</h3><p>„Kostenlose Freizeitangebote könnten mehr Jugendlichen gemeinsame Aktivitäten ermöglichen.“</p></div><div class="card"><h3>2 · Begründung</h3><p>„Nicht jede Familie kann regelmäßig Geld für Sport, Kurse oder Veranstaltungen ausgeben.“</p></div><div class="card"><h3>3 · Beispiel</h3><p>„Ein kostenloser offener Sportnachmittag könnte auch Jugendlichen offenstehen, die sich einen Vereinsbeitrag nicht leisten können.“</p></div></div></div>
+<div class="card"><h2>Eigener Absatz</h2><p>Formuliere selbst einen Argumentationsabsatz zum Thema <b>„Sollten Städte mehr kostenlose Freizeitangebote für Jugendliche schaffen?“</b>. Nutze Behauptung, Begründung und Beispiel.</p><textarea id="mp" placeholder="Dein eigener Argumentationsabsatz …"></textarea><button class="btn good" style="margin-top:10px" onclick="saveMain()">Speichern & prüfen</button><div id="mpf"></div></div>`}
 function saveMain(){let x=document.getElementById("mp").value.trim(),f=document.getElementById("mpf");if(x.length>=80){S.writer.body=x;S.ownAttempt=true;S.skills.structure=Math.max(S.skills.structure,80);done("mainpart",20);save();f.innerHTML=`<div class="feedback good">Gut: Du hast einen eigenen Absatz geschrieben. Prüfe nun selbst: Behauptung? Warum? Beispiel?</div>`}else f.innerHTML=`<div class="feedback warn">Schreibe einen vollständigen Absatz mit einem klaren Gedanken, einer Begründung und möglichst einem Beispiel.</div>`}
 
 function conclusion(c){c.innerHTML=shell("Schluss","Der Schluss zieht die Argumentation zusammen – er eröffnet nicht plötzlich ein neues Thema.");
-c.innerHTML+=`<div class="card"><h2>Erkennen</h2><div class="choicegrid">${["„Also ja. Das war meine Erörterung.“","„Zusammenfassend spricht vieles dafür, den Unterricht später beginnen zu lassen. Ein solcher Schritt könnte dazu beitragen, dass Jugendliche konzentrierter und erholter in den Schultag starten.“","„Wie gesagt gibt es noch viele weitere Argumente.“"].map((x,i)=>`<button class="choice" onclick="cp(${i},this)">${x}</button>`).join("")}</div><div id="cf"></div></div>
-<div class="card"><h2>Jetzt selbst schreiben</h2><p>Schreibe einen eigenen Schluss zum Thema „Sollte die Schule später beginnen?“.</p><textarea id="co" placeholder="Dein eigener Schluss …"></textarea><button class="btn good" style="margin-top:10px" onclick="saveCon()">Speichern</button><div id="cof"></div></div>`}
+c.innerHTML+=`<div class="card"><h2>Erkennen</h2><div class="choicegrid">${["„Also ja. Das war meine Erörterung.“","„Zusammenfassend sprechen gute Gründe dafür, mehr kostenlose Freizeitangebote für Jugendliche zu schaffen. Sie könnten Begegnungen ermöglichen und dafür sorgen, dass Freizeit nicht allein vom Geldbeutel der Familie abhängt.“","„Wie gesagt gibt es noch viele weitere Argumente.“"].map((x,i)=>`<button class="choice" onclick="cp(${i},this)">${x}</button>`).join("")}</div><div id="cf"></div></div>
+<div class="card"><h2>Jetzt selbst schreiben</h2><p>Schreibe einen eigenen Schluss zum Thema „Sollten Städte mehr kostenlose Freizeitangebote für Jugendliche schaffen?“.</p><textarea id="co" placeholder="Dein eigener Schluss …"></textarea><button class="btn good" style="margin-top:10px" onclick="saveCon()">Speichern</button><div id="cof"></div></div>`}
 function cp(i,e){if(i===1){e.classList.add("correct");done("conclusion",15);document.getElementById("cf").innerHTML=`<div class="feedback good">Musterlösung: Ergebnis bündeln und begründete Schlussfolgerung formulieren.</div>`}else{e.classList.add("wrong");document.getElementById("cf").innerHTML=`<div class="feedback warn">Der Schluss soll die Argumentation abrunden und das Ergebnis deutlich machen.</div>`}}
 function saveCon(){let x=document.getElementById("co").value.trim(),f=document.getElementById("cof");if(x.length>=50){S.writer.conclusion=x;S.ownAttempt=true;save();f.innerHTML=`<div class="feedback good">Gespeichert. Du hast deinen eigenen Schluss formuliert.</div>`}else f.innerHTML=`<div class="feedback warn">Formuliere mehrere vollständige Sätze und nenne ein klares Ergebnis.</div>`}
 
+function practice(c){
+ const p=S.practice||(S.practice={task:topicPool[4].q,claim:"",reason:"",example:"",paragraph:"",revision:""});
+ if(!p.type)p.type="argument";
+ c.innerHTML=shell("Schreibtraining","Abwechslungsreiche Schreibaufträge: Du trainierst einzelne Bausteine, überarbeitest Texte und schreibst eine vollständige Erörterung.");
+ c.innerHTML+=`<div class="hero"><h2>Was möchtest du heute üben?</h2><p>Wähle erst eine Streitfrage und dann eine Schreibaufgabe. Die Themen kommen aus Freizeit, Medien, Konsum, Umwelt, Stadtleben und Zusammenleben – nicht nur aus Schule.</p>
+ <label for="ptask"><b>1 · Streitfrage</b></label><select id="ptask" onchange="practiceTask(this.value)">${topicPool.map(t=>`<option value="${escHTML(t.q)}" ${p.task===t.q?"selected":""}>${escHTML(t.group+": "+t.q)}</option>`).join("")}</select>
+ <label for="practiceType"><b>2 · Schreibauftrag</b></label><select id="practiceType" onchange="practiceTypeChanged(this.value)">${[
+ ["argument","Ein Argument ausarbeiten"],["intro","Eine Einleitung schreiben"],["order","Argumente steigern und ordnen"],["revision","Einen schwachen Absatz überarbeiten"],["conclusion","Einen Schluss formulieren"],["full","Eine vollständige Erörterung schreiben"]
+ ].map(([v,l])=>`<option value="${v}" ${p.type===v?"selected":""}>${l}</option>`).join("")}</select>
+ <p class="small muted">Deine Eingaben werden automatisch in diesem Browser gespeichert. Die Rückmeldungen sind einfache Prüfhilfen und keine KI-Bewertung.</p></div><div id="practiceTaskArea"></div>`;
+ renderPracticeTask();
+}
+function practiceTask(v){S.practice.task=v;save();renderPracticeTask()}
+function practiceTypeChanged(v){S.practice.type=v;save();renderPracticeTask()}
+function practiceSet(k,v){S.practice[k]=v;save();const count=document.getElementById('count_'+k);if(count)count.textContent=v.trim().split(/\s+/).filter(Boolean).length+' Wörter';}
+function practiceField(key,label,placeholder,minHeight="135px"){
+ const p=S.practice||{};return `<label for="field_${key}"><b>${label}</b></label><textarea id="field_${key}" style="min-height:${minHeight}" placeholder="${placeholder}" oninput="practiceSet('${key}',this.value)">${escHTML(p[key]||"")}</textarea><div class="muted small" id="count_${key}">${String(p[key]||"").trim().split(/\s+/).filter(Boolean).length} Wörter</div>`;
+}
+function renderPracticeTask(){
+ const p=S.practice||{};const root=document.getElementById('practiceTaskArea');if(!root)return;
+ const topic=escHTML(p.task||topicPool[0].q);
+ const assignment={
+ argument:`<div class="card"><span class="pill">AUFGABE 1 · ARGUMENT AUFBAUEN</span><h2>Vom Grund zur überzeugenden Argumentation</h2><div class="rule"><b>Streitfrage:</b> ${topic}</div><p>Entscheide dich für eine Position. Entfalte <b>ein</b> Argument nach dem Muster Behauptung – Begründung – Beispiel. Schreibe konkret und erkläre Zusammenhänge.</p>
+ ${practiceField('claim','1. Behauptung / Argument','Ein wichtiger Grund dafür/dagegen ist, dass …','105px')}
+ ${practiceField('reason','2. Begründung','Das ist bedeutsam, weil …','120px')}
+ ${practiceField('example','3. Beispiel oder konkrete Folge','Das zeigt sich zum Beispiel, wenn …','120px')}
+ ${practiceField('paragraph','4. Zusammenhängenden Absatz schreiben','Verbinde die drei Bausteine zu einem flüssigen Absatz …','190px')}
+ <div class="row" style="margin-top:12px"><button class="btn secondary" onclick="buildPracticeDraft()">Bausteine als Entwurf übernehmen</button><button class="btn" onclick="checkPractice()">Schreibcheck</button><button class="btn good" onclick="savePractice()">Zwischenstand sichern</button></div><div id="practiceFeedback"></div></div>`,
+ intro:`<div class="card"><span class="pill">AUFGABE 2 · EINLEITUNG</span><h2>Neugierig machen und zur Frage führen</h2><div class="rule"><b>Streitfrage:</b> ${topic}</div><p>Schreibe eine Einleitung mit etwa 3–5 Sätzen. Führe ins Thema ein, zeige, warum die Frage relevant ist, und formuliere dann die Streitfrage. Verrate noch nicht deine gesamte Argumentation.</p>
+ <div class="check"><div class="checkmark">1</div><div><b>Hinführung</b><br><span class="muted">Starte mit einer Beobachtung oder einer Situation aus dem Alltag.</span></div></div><div class="check"><div class="checkmark">2</div><div><b>Themenbezug</b><br><span class="muted">Erkläre knapp, weshalb das Thema Menschen betrifft.</span></div></div><div class="check"><div class="checkmark">3</div><div><b>Fragestellung</b><br><span class="muted">Führe zur konkreten Frage über.</span></div></div>
+ ${practiceField('introDraft','Deine Einleitung','In vielen Alltagssituationen stellt sich die Frage, ob …','190px')}<button class="btn" style="margin-top:10px" onclick="checkPracticeIntro()">Einleitung prüfen</button><button class="btn good" style="margin-top:10px;margin-left:8px" onclick="savePracticeType('introDraft','Einleitung gespeichert.')">Einleitung sichern</button><div id="practiceFeedback"></div></div>`,
+ order:`<div class="card"><span class="pill">AUFGABE 3 · ARGUMENTE STEIGERN</span><h2>Vom nachvollziehbaren zum stärksten Argument</h2><div class="rule"><b>Streitfrage:</b> ${topic}</div><p>Entwickle drei unterschiedliche Gründe, die zu deiner Position passen. Ordne sie anschließend vom weniger starken zum überzeugendsten Argument. Die Felder stehen schon in der Reihenfolge, die du für sinnvoll hältst.</p>
+ ${practiceField('rank1','Argument 1 · eher weniger stark','Ein erster Grund ist …','105px')}
+ ${practiceField('rank2','Argument 2 · stärker','Darüber hinaus …','105px')}
+ ${practiceField('rank3','Argument 3 · am stärksten','Besonders überzeugend ist …','105px')}
+ ${practiceField('rankWhy','Warum ist diese Reihenfolge sinnvoll?','Das stärkste Argument steht am Ende, weil …','120px')}
+ <button class="btn" style="margin-top:10px" onclick="checkPracticeOrder()">Reihenfolge reflektieren</button><button class="btn good" style="margin-top:10px;margin-left:8px" onclick="savePracticeType('rankWhy','Argumente und Begründung gesichert.')">Sichern</button><div id="practiceFeedback"></div></div>`,
+ revision:`<div class="card"><span class="pill">AUFGABE 4 · ÜBERARBEITEN</span><h2>Aus einer Behauptung wird ein Argument</h2><div class="rule"><b>Streitfrage:</b> ${topic}</div><p><b>Ausgangstext – absichtlich schwach:</b></p><div class="quote">„Ich finde das Thema gut. Das wäre besser. Viele Leute hätten etwas davon. Deshalb sollte man das machen.“</div><p>Überarbeite den Absatz so, dass er wirklich zur gewählten Streitfrage passt. Formuliere eine klare Behauptung, erkläre den Grund und nenne ein konkretes Beispiel oder eine Folge. Vermeide Wiederholungen und leere Formulierungen wie „das wäre besser“.</p>
+ ${practiceField('revision','Deine überarbeitete Fassung','Ein überzeugenderer Absatz könnte so beginnen: …','210px')}
+ ${practiceField('revisionWhy','Erkläre deine wichtigste Änderung','Ich habe den Text verbessert, indem ich …','100px')}
+ <button class="btn" style="margin-top:10px" onclick="checkPracticeRevision()">Überarbeitung prüfen</button><button class="btn good" style="margin-top:10px;margin-left:8px" onclick="savePracticeType('revision','Überarbeitung gesichert.')">Sichern</button><div id="practiceFeedback"></div></div>`,
+ conclusion:`<div class="card"><span class="pill">AUFGABE 5 · SCHLUSS</span><h2>Ein Ergebnis formulieren, ohne alles zu wiederholen</h2><div class="rule"><b>Streitfrage:</b> ${topic}</div><p>Schreibe einen Schluss mit 2–4 Sätzen. Greife dein Ergebnis auf, bündele den Gedanken und formuliere bei Bedarf einen Ausblick. Beginne nicht mit einem ganz neuen Hauptargument.</p>
+ <div class="quote"><b>Hilfsstruktur:</b> „Insgesamt sprechen die genannten Gründe dafür, dass … . Besonders wichtig ist … . Deshalb … .“</div>
+ ${practiceField('conclusionDraft','Dein Schluss','Insgesamt lässt sich festhalten, dass …','170px')}<button class="btn" style="margin-top:10px" onclick="checkPracticeConclusion()">Schluss prüfen</button><button class="btn good" style="margin-top:10px;margin-left:8px" onclick="savePracticeType('conclusionDraft','Schluss gesichert.')">Sichern</button><div id="practiceFeedback"></div></div>`,
+ full:`<div class="card"><span class="pill">AUFGABE 6 · GANZER TEXT</span><h2>Eine lineare Erörterung verfassen</h2><div class="rule"><b>Aufgabenstellung:</b> Erörtere folgende Frage: ${topic}</div><p>Schreibe eine vollständige Erörterung mit Einleitung, Hauptteil und Schluss. Entwickle mindestens drei unterschiedliche Argumente, entfalte sie mit Begründungen und Beispielen und ordne sie steigernd. Trenne Einleitung, Hauptteil und Schluss durch Leerzeilen. Als Orientierung: etwa 250–400 Wörter.</p>
+ <div class="grid"><div><b>Einleitung</b><p class="muted small">Thema einführen und Frage stellen.</p></div><div><b>Hauptteil</b><p class="muted small">Mindestens drei ausgearbeitete Argumente, sinnvoll gesteigert.</p></div><div><b>Schluss</b><p class="muted small">Ergebnis klar formulieren.</p></div></div>
+ ${practiceField('fullText','Deine vollständige Erörterung','Einleitung …\n\nHauptteil …\n\nSchluss …','330px')}
+ <div class="row" style="margin-top:10px"><button class="btn" onclick="checkPracticeFull()">Textumfang und Aufbau prüfen</button><button class="btn good" onclick="savePracticeFull()">Text sichern</button><button class="btn secondary" onclick="nav('review')">Zur Überarbeitung →</button></div><div id="practiceFeedback"></div></div>`
+ };
+ root.innerHTML=assignment[p.type]||assignment.argument;
+}
+function buildPracticeDraft(){const p=S.practice;const parts=[p.claim,p.reason,p.example].map(x=>(x||"").trim()).filter(Boolean);if(!parts.length){document.getElementById('practiceFeedback').innerHTML='<div class="feedback warn">Schreibe zuerst mindestens einen Baustein.</div>';return;}p.paragraph=parts.join(' ');save();renderPracticeTask();const f=document.getElementById('practiceFeedback');if(f)f.innerHTML='<div class="feedback">Der Entwurf wurde aus deinen eigenen Bausteinen zusammengesetzt. Verbinde die Sätze jetzt sprachlich und prüfe, ob die Begründung zum Beispiel passt.</div>';}
+function practiceChecks(title,checks){const root=document.getElementById('practiceFeedback');if(!root)return;root.innerHTML='<div class="feedback"><b>'+title+'</b>'+checks.map(x=>`<div class="check"><div class="checkmark">${x[1]?'✓':'·'}</div><div><b>${x[0]}</b><div class="muted">${x[1]?'Dieses Merkmal ist erkennbar.':x[2]}</div></div></div>`).join('')+'<p class="small muted">Automatischer Schreibcheck: Er prüft einfache Textmerkmale, nicht die inhaltliche Richtigkeit oder die tatsächliche Überzeugungskraft.</p></div>';}
+function checkPractice(){const p=S.practice;practiceChecks('Dein Argument-Check',[
+ ['Behauptung formuliert',(p.claim||'').trim().length>=20,'Formuliere einen klaren Grund, nicht nur „Ich finde …“.'],
+ ['Begründung ausgearbeitet',(p.reason||'').trim().length>=30,'Erkläre, warum der Grund für deine Position spricht.'],
+ ['Beispiel konkret',(p.example||'').trim().length>=25,'Ergänze eine konkrete Situation oder eine nachvollziehbare Folge.'],
+ ['Absatz mit mindestens drei Sätzen',((p.paragraph||'').match(/[.!?]+/g)||[]).length>=3,'Verbinde die Bausteine in mindestens drei vollständigen Sätzen.'],
+ ['Sachliche Sprache',!(/\b(mega|voll geil|halt so|echt cool|krass)\b/i.test(p.paragraph||'')),'Ersetze sehr umgangssprachliche Wörter durch präzisere Formulierungen.']]);}
+function checkPracticeIntro(){const x=(S.practice.introDraft||'').trim();practiceChecks('Einleitungs-Check',[
+ ['Ausreichender Umfang',x.split(/\s+/).filter(Boolean).length>=35,'Formuliere ungefähr 3–5 vollständige Sätze.'],
+ ['Thema und Frage erkennbar',/ob|sollte|sollten|frage|fraglich|diskutiert/i.test(x),'Führe klar zur Streitfrage hin.'],
+ ['Keine reine Meinungsbehauptung am Anfang',!/^ich finde/i.test(x),'Beginne sachlich mit einer Beobachtung oder einem Themenbezug.'],
+ ['Satzschlusszeichen vorhanden',/[.!?]/.test(x),'Prüfe, ob deine Sätze vollständig und abgeschlossen sind.']]);}
+function checkPracticeOrder(){const p=S.practice;practiceChecks('Check zur Argumentsteigerung',[
+ ['Drei Argumente entwickelt',[p.rank1,p.rank2,p.rank3].every(x=>(x||'').trim().length>=20),'Formuliere drei unterschiedliche Gründe.'],
+ ['Argumente nicht nur wiederholt',[p.rank1,p.rank2,p.rank3].map(x=>(x||'').trim().toLowerCase()).filter(Boolean).length===new Set([p.rank1,p.rank2,p.rank3].map(x=>(x||'').trim().toLowerCase())).size,'Prüfe, ob die drei Argumente wirklich unterschiedliche Gedanken enthalten.'],
+ ['Reihenfolge begründet',(p.rankWhy||'').trim().length>=40,'Erkläre, weshalb das letzte Argument besonders überzeugend ist.']]);}
+function checkPracticeRevision(){const p=S.practice;practiceChecks('Überarbeitungs-Check',[
+ ['Text deutlich ausgearbeitet',(p.revision||'').trim().length>=100,'Schreibe einen vollständigen Absatz statt nur einzelner Stichwörter.'],
+ ['Begründungssignal vorhanden',/weil|denn|dadurch|da |deshalb|daher|denn/i.test(p.revision||''),'Mache den Zusammenhang zwischen Grund und Aussage deutlich.'],
+ ['Beispiel oder Folge erkennbar',/zum beispiel|beispielsweise|etwa|wenn|etwa|dadurch|sodass|so dass/i.test(p.revision||''),'Ergänze ein Beispiel oder eine konkrete Folge.'],
+ ['Weniger leere Formulierungen',!(/\b(das ist gut|das wäre besser|viele leute hätten etwas davon)\b/i.test(p.revision||'')),'Ersetze ungenaue Formulierungen durch konkrete Aussagen.'],
+ ['Überarbeitung begründet',(p.revisionWhy||'').trim().length>=25,'Erkläre, was du verbessert hast und warum.']]);}
+function checkPracticeConclusion(){const x=(S.practice.conclusionDraft||'').trim();practiceChecks('Schluss-Check',[
+ ['Mehrere vollständige Sätze',((x.match(/[.!?]+/g)||[]).length)>=2,'Formuliere mindestens zwei vollständige Sätze.'],
+ ['Ergebnis erkennbar',/insgesamt|zusammenfassend|deshalb|daher|folglich|spricht dafür|spricht dagegen|lässt sich festhalten/i.test(x),'Formuliere eine klare Schlussfolgerung.'],
+ ['Kein neues Hauptargument angekündigt',!/^ein weiterer grund/i.test(x),'Bündele deine Gedanken, statt ein neues Hauptargument zu beginnen.']]);}
+function checkPracticeFull(){const x=(S.practice.fullText||'').trim();const words=x.split(/\s+/).filter(Boolean).length;practiceChecks('Check deiner vollständigen Erörterung ('+words+' Wörter)',[
+ ['Richtwert beim Umfang',words>=250,'Schreibe als Orientierung mindestens etwa 250 Wörter.'],
+ ['Mehrere vollständige Sätze',((x.match(/[.!?]+/g)||[]).length)>=8,'Entwickle Einleitung, Hauptteil und Schluss in mehreren ganzen Sätzen.'],
+ ['Gliederung erkennbar',/insgesamt|zusammenfassend|abschließend|zum schluss|letztlich/i.test(x),'Mache den Übergang zum Schluss bzw. das Ergebnis deutlich.'],
+ ['Begründungen sichtbar',/weil|denn|da |deshalb|daher|dadurch/i.test(x),'Verknüpfe deine Behauptungen mit Begründungen.'],
+ ['Beispiel oder Konkretisierung',/zum beispiel|beispielsweise|etwa|etwa dann|wenn/i.test(x),'Nutze mindestens ein konkretes Beispiel oder eine nachvollziehbare Folge.']]);}
+function savePracticeType(key,message){const x=(S.practice[key]||'').trim();if(x.length<35){document.getElementById('practiceFeedback').innerHTML='<div class="feedback warn">Schreibe deine Antwort noch etwas ausführlicher, bevor du sie sicherst.</div>';return;}S.ownAttempt=true;S.skills.writing=Math.max(S.skills.writing,35);save();document.getElementById('practiceFeedback').innerHTML='<div class="feedback good">'+message+' Dein Text bleibt lokal in diesem Browser gespeichert.</div>';}
+function savePractice(revised=false){const p=S.practice;const enough=['claim','reason','example','paragraph'].every(k=>(p[k]||'').trim());if(!enough){document.getElementById('practiceFeedback').innerHTML='<div class="feedback warn">Fülle Behauptung, Begründung, Beispiel und zusammenhängenden Absatz aus. Du kannst deinen Zwischenstand jederzeit weiterschreiben.</div>';save();return;}S.ownAttempt=true;S.skills.writing=Math.max(S.skills.writing,revised&&p.revision.trim()?65:35);save();const f=document.getElementById('practiceFeedback');if(f)f.innerHTML='<div class="feedback good"><b>Schreibtraining gespeichert.</b> Deine Eingaben bleiben auf diesem Gerät. Nutze jetzt den Schreibcheck und verbessere eine Stelle bewusst.</div>';}
+function savePracticeFull(){const x=(S.practice.fullText||"").trim();const words=x.split(/\s+/).filter(Boolean).length;if(words<120){document.getElementById('practiceFeedback').innerHTML='<div class="feedback warn">Dein Text hat etwa '+words+' Wörter. Ergänze Einleitung, mindestens zwei ausgearbeitete Argumente und Schluss, bevor du ihn sicherst.</div>';return;}const parts=x.split(/\n\s*\n/).map(v=>v.trim()).filter(Boolean);S.ownAttempt=true;S.writer.topic=S.practice.task;if(parts.length>=3){S.writer.intro=parts[0];S.writer.body=parts.slice(1,-1).join("\n\n");S.writer.conclusion=parts[parts.length-1];S.writer.args=parts.slice(1,-1).slice(0,3);}else{S.writer.intro="";S.writer.body=x;S.writer.conclusion="";S.writer.args=[];}S.skills.writing=Math.max(S.skills.writing,75);save();done('practice-full',30);document.getElementById('practiceFeedback').innerHTML='<div class="feedback good"><b>Deine Erörterung ist gespeichert.</b> Überarbeite jetzt den Text anhand der Kriterien. Wenn du Leerzeilen zwischen Einleitung, Hauptteil und Schluss gesetzt hast, kann der Überarbeitungscoach diese Abschnitte getrennt prüfen. Der Wortumfang allein sagt noch nichts darüber aus, wie überzeugend argumentiert wurde.</div>';}
+
 function writer(c){let w=S.writer;c.innerHTML=shell("Schreibwerkstatt","Hier entsteht dein eigener Text. Die Plattform darf dich unterstützen, aber nicht für dich schreiben.");
-c.innerHTML+=`<div class="card"><span class="pill">SCHRITT 1</span><h2>Aufgabenstellung klären</h2><select id="topic"><option>Sollte die Schule später beginnen?</option><option>Sollten Hausaufgaben reduziert werden?</option><option>Sollten Handys im Unterricht erlaubt sein?</option><option>Sollte es mehr Projekttage geben?</option></select><div class="row" style="margin-top:10px"><button class="btn secondary" onclick="pos('dafür')">Ich bin eher dafür.</button><button class="btn secondary" onclick="pos('dagegen')">Ich bin eher dagegen.</button><span id="position" class="pill">${w.position||"Position auswählen"}</span></div></div>
+c.innerHTML+=`<div class="card"><span class="pill">SCHRITT 1</span><h2>Aufgabenstellung klären</h2><p>Wähle eine Frage aus dem Alltag und entscheide dich für eine klare Position.</p><select id="topic" onchange="writerTopicChanged(this.value)">${topicPool.map(t=>`<option value="${t.q}" ${w.topic===t.q?"selected":""}>${t.q}</option>`).join("")}</select><div class="row" style="margin-top:10px"><button class="btn secondary" onclick="pos('dafür')">Ich bin eher dafür.</button><button class="btn secondary" onclick="pos('dagegen')">Ich bin eher dagegen.</button><span id="position" class="pill">${w.position||"Position auswählen"}</span></div></div>
 <div class="card"><span class="pill">SCHRITT 2</span><h2>Stoffsammlung & Gliederung</h2><p class="muted">Notiere Stichpunkte. Sortiere danach vom schwächeren zum stärkeren Argument.</p>${w.args.map((x,i)=>`<div class="step"><div class="circle">${i+1}</div><input id="a${i}" value="${x.replaceAll('"','&quot;')}" placeholder="Argument ${i+1}"></div>`).join("")}</div>
 <div class="card"><span class="pill">SCHRITT 3</span><h2>Dein vollständiger Text</h2><label><b>Einleitung</b></label><textarea id="wi" placeholder="Deine Einleitung …">${w.intro}</textarea><label><b>Hauptteil</b></label><textarea id="wb" placeholder="Deine Argumentation …">${w.body}</textarea><label><b>Schluss</b></label><textarea id="wc" placeholder="Dein Schluss …">${w.conclusion}</textarea></div>
 <div class="card"><h2>Schreibregel</h2><div class="rule"><b>Erst du, dann der Coach.</b> Schreibe deinen eigenen Entwurf, bevor du Musterlösungen ansiehst. Der Coach gibt Kriterien und Fragen, keine fertige Hausaufgabe.</div><div class="row"><button class="btn good" onclick="saveWriter()">Eigenen Entwurf speichern</button><button class="btn secondary" onclick="nav('review')">Zum Überarbeitungscoach →</button></div><div id="wf"></div></div>`;document.getElementById("topic").value=w.topic}
+function writerTopicChanged(v){S.writer.topic=v;save()}
 function pos(p){S.writer.position=p;document.getElementById("position").textContent="Position: "+p;save()}
 function saveWriter(){let w=S.writer;w.topic=document.getElementById("topic").value;w.args=[0,1,2].map(i=>document.getElementById("a"+i).value);w.intro=document.getElementById("wi").value;w.body=document.getElementById("wb").value;w.conclusion=document.getElementById("wc").value;S.ownAttempt=true;S.skills.writing=100;done("writer",35);save();document.getElementById("wf").innerHTML=`<div class="feedback good"><b>Entwurf gespeichert.</b> Gehe jetzt zur Überarbeitung. Dein nächster Schritt ist nicht „besser klingen“, sondern gezielt prüfen: Inhalt → Aufbau → Sprache → Richtigkeit.</div>`}
 
-function review(c){let w=S.writer,txt=[w.intro,w.body,w.conclusion].join(" ");let checks=[
-["Aufgabenbezug",!!w.topic&&!!w.position,"Ist die Fragestellung klar beantwortet?"],
-["Einleitung",w.intro.trim().length>40,"Führt die Einleitung sachlich zum Thema und zur Fragestellung?"],
-["Argumente",w.args.filter(Boolean).length===3,"Sind drei unterschiedliche Argumente geplant?"],
-["Argumententfaltung",/weil|da |denn|deshalb|daher/i.test(w.body),"Kannst du bei deinen Argumenten erklären, warum sie gelten?"],
-["Beispiel/Beleg",/zum beispiel|beispielsweise|etwa|z\. ?B\./i.test(w.body),"Gibt es ein konkretes Beispiel oder einen nachvollziehbaren Beleg?"],
-["Steigerung",w.args.filter(Boolean).length===3,"Sind die Argumente sinnvoll vom schwächeren zum stärkeren geordnet?"],
-["Sachlicher Stil",!/mega|voll geil|halt so|echt cool/i.test(txt),"Sind umgangssprachliche Formulierungen vermieden?"],
-["Schluss",w.conclusion.trim().length>40,"Wird das Ergebnis zusammengeführt?"]
-];c.innerHTML=shell("Überarbeitungscoach","Überarbeiten heißt: Entscheidungen am eigenen Text treffen – nicht einfach Fehler vom Tool korrigieren lassen.");
-c.innerHTML+=`<div class="card"><h2>Deine Kriterienliste</h2>${checks.map(x=>`<div class="check"><div class="checkmark">${x[1]?"✓":"!"}</div><div><b>${x[0]}</b><div class="muted">${x[1]?"Erkennbar erfüllt.":"Überarbeite hier: "+x[2]}</div></div></div>`).join("")}</div>
-<div class="card"><h2>Überarbeitungsauftrag</h2><p>Wähle <b>einen</b> Schwerpunkt und überarbeite deinen Text selbst:</p><div class="choicegrid"><button class="choice" onclick="focus('Inhalt')">Inhalt: Argumente genauer begründen</button><button class="choice" onclick="focus('Aufbau')">Aufbau: Reihenfolge und Übergänge verbessern</button><button class="choice" onclick="focus('Sprache')">Sprache: sachlicher und abwechslungsreicher formulieren</button><button class="choice" onclick="focus('Richtigkeit')">Richtigkeit: Rechtschreibung und Zeichensetzung prüfen</button></div><div id="rf"></div></div>`}
+function review(c){
+let w=S.writer,txt=[w.intro,w.body,w.conclusion].join(" ").trim();
+const words=txt?txt.split(/\s+/).filter(Boolean):[];
+const bodySentences=(w.body.match(/[.!?]+/g)||[]).length;
+const args=w.args.filter(x=>x.trim());
+const transitions=/zunächst|außerdem|darüber hinaus|ein weiterer|schließlich|am wichtigsten|besonders überzeugend|deshalb|daher|folglich|zum schluss/i.test(w.body);
+const examples=/zum beispiel|beispielsweise|etwa\b|konkret|wie etwa/i.test(w.body);
+const reasons=/weil|da\b|denn|deshalb|daher|dadurch|aus diesem grund|das liegt daran/i.test(w.body);
+const informal=/\b(mega|voll geil|halt so|echt cool|irgendwie|krass)\b/i.test(txt);
+const introOk=w.intro.trim().length>45;
+const conclusionOk=w.conclusion.trim().length>35;
+const checks=[
+["Aufgabenbezug",!!w.topic&&!!w.position,"Ist deine Position zur Fragestellung klar erkennbar?"],
+["Einleitung",introOk,"Führt die Einleitung zum Thema und zur Fragestellung hin?"],
+["Argumente",args.length>=2,"Hast du mindestens zwei unterschiedliche Argumente ausgearbeitet?"],
+["Begründung",reasons,"Erklärst du, warum deine Argumente für deine Position sprechen?"],
+["Beispiel oder Beleg",examples,"Veranschaulichst du mindestens ein Argument mit einem Beispiel oder Beleg?"],
+["Verknüpfung",transitions,"Machst du die Reihenfolge deiner Argumente sprachlich deutlich?"],
+["Sachlicher Stil",!informal,"Ist deine Sprache sachlich und für eine Erörterung geeignet?"],
+["Schluss",conclusionOk,"Fasst dein Schluss die Überlegung zusammen und formuliert ein Fazit?"]
+];
+const result = (ok,good,need)=>ok?good:need;
+let feedback=[];
+if(!w.position) feedback.push({title:"Position festlegen",text:"Du hast noch keine Position ausgewählt. Entscheide, welche Antwort du auf die Fragestellung vertrittst, und prüfe, ob deine Argumente diese Position stützen."});
+if(!introOk) feedback.push({title:"Einleitung ausbauen",text:"Deine Einleitung ist noch sehr kurz oder fehlt. Führe zum Thema hin und formuliere die Frage, die du im Hauptteil beantworten wirst."});
+if(args.length<2) feedback.push({title:"Argumente planen",text:"In deiner Stoffsammlung sind bisher "+args.length+" Argument(e) eingetragen. Sammle weitere unterschiedliche Gründe und ordne sie vom weniger überzeugenden zum stärksten."});
+if(!reasons) feedback.push({title:"Begründungen vertiefen",text:"Im Hauptteil wurden keine eindeutigen Begründungssignale wie „weil“, „denn“ oder „deshalb“ erkannt. Prüfe bei jedem Argument: Warum spricht dieser Punkt für deine Position?"});
+if(!examples) feedback.push({title:"Beispiel ergänzen",text:"Ein konkretes Beispiel wurde im Hauptteil nicht eindeutig erkannt. Ergänze eine Situation, Beobachtung oder ein nachvollziehbares Beispiel, das deine Begründung stützt."});
+if(!transitions) feedback.push({title:"Argumente verbinden",text:"Die Reihenfolge deiner Argumente ist sprachlich noch nicht deutlich erkennbar. Nutze passende Übergänge und mache sichtbar, welches Argument besonders stark ist."});
+if(informal) feedback.push({title:"Sachlicher formulieren",text:"Dein Text enthält umgangssprachliche Wendungen. Suche nach Formulierungen, die genauer und sachlicher ausdrücken, was du meinst."});
+if(!conclusionOk) feedback.push({title:"Schluss vervollständigen",text:"Dein Schluss ist noch kurz oder fehlt. Führe die wichtigsten Gedanken zusammen und formuliere ein Fazit, das zu deiner Position passt."});
+if(words<120) feedback.push({title:"Textumfang prüfen",text:"Dein bisheriger Text umfasst etwa "+words+" Wörter. Prüfe anhand des Arbeitsauftrags, ob du deine Argumente ausreichend entfaltet hast."});
+if(feedback.length===0) feedback.push({title:"Nächster Schritt",text:"Die grundlegenden Prüfkriterien sind anhand einfacher Textmerkmale erkennbar. Lies deinen Text jetzt noch einmal aufmerksam und prüfe, ob jede Begründung wirklich nachvollziehbar ist."});
+c.innerHTML=shell("Text überprüfen","Eine erste Rückmeldung zu deinem gespeicherten Entwurf. Prüfe die Hinweise am eigenen Text und entscheide selbst, was du überarbeitest.");
+c.innerHTML+=`<div class="card"><div class="between"><h2>Dein Text im Überblick</h2><span class="pill">Automatischer Textcheck</span></div><p class="muted">Diese Prüfung arbeitet mit erkennbaren Textmerkmalen. Sie ersetzt keine vollständige fachliche Bewertung und kann Inhalte missverstehen.</p><div class="grid"><div><div class="score">${words}</div><div class="muted small">Wörter im Text</div></div><div><div class="score">${args.length}/3</div><div class="muted small">geplante Argumente</div></div><div><div class="score">${bodySentences}</div><div class="muted small">Satzzeichen im Hauptteil</div></div></div></div>
+<div class="card"><div class="between"><h2>Individuelles KI-Feedback</h2><span class="pill">Schreibcoach</span></div><p>Der Schreibcoach prüft deine Argumentation und bezieht sich auf konkrete Stellen in deinem Text. Er schreibt den Aufsatz nicht für dich.</p><label for="feedbackCode"><b>Zugangscode der Lehrkraft</b></label><input id="feedbackCode" type="password" autocomplete="off" placeholder="Zugangscode eingeben" maxlength="100"><p class="muted small">Der Code wird nur für diese Anfrage verwendet und nicht im Browser gespeichert. Schülertexte werden an den konfigurierten KI-Dienst gesendet, um Feedback zu erzeugen.</p><div class="row"><button class="btn" id="aiReviewButton" onclick="requestAIReview()">KI-Feedback anfordern</button><button class="btn secondary" onclick="document.getElementById('aiFeedbackResult').innerHTML='';">Feedback schließen</button></div><div id="aiFeedbackResult" aria-live="polite"></div></div>
+<div class="card"><h2>Kriterien für eine lineare Erörterung</h2>${checks.map(x=>`<div class="check"><div class="checkmark">${x[1]?"✓":"·"}</div><div><b>${x[0]}</b><div class="muted">${x[1]?"Ein passendes Merkmal wurde erkannt.":"Hier lohnt sich eine genauere Prüfung: "+x[2]}</div></div></div>`).join("")}</div>
+<div class="card"><h2>Individuelle Hinweise zu deinem Entwurf</h2><p>Die folgenden Hinweise werden anhand deiner gespeicherten Angaben und Formulierungen zusammengestellt.</p>${feedback.map(x=>`<div class="feedback ${x.title==="Nächster Schritt"?"good":"warn"}"><b>${x.title}</b><p>${x.text}</p></div>`).join("")}<div class="rule"><b>Deine Aufgabe:</b> Wähle zwei Hinweise aus, überarbeite deinen Text selbst und speichere die neue Fassung anschließend in der Schreibwerkstatt.</div><div class="row"><button class="btn" onclick="nav('writer')">Text überarbeiten</button><button class="btn secondary" onclick="window.print()">Feedback drucken</button></div></div>`;
+}
+function escHTML(x){return String(x??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+async function requestAIReview(){
+ const w=S.writer; const code=document.getElementById("feedbackCode")?.value.trim(); const result=document.getElementById("aiFeedbackResult"); const btn=document.getElementById("aiReviewButton");
+ const text=[w.intro,w.body,w.conclusion].filter(Boolean).join("\n\n").trim();
+ if(text.length<120){result.innerHTML='<div class="feedback warn">Schreibe und speichere zuerst einen eigenen Entwurf mit Einleitung, Hauptteil und Schluss. Für eine sinnvolle Rückmeldung braucht der Coach genügend Text.</div>';return;}
+ if(!code){result.innerHTML='<div class="feedback warn">Bitte gib den Zugangscode ein, den deine Lehrkraft bereitstellt.</div>';return;}
+ btn.disabled=true;btn.textContent="Feedback wird erstellt …";result.innerHTML='<div class="ai-status">Dein Text wird anhand der Kriterien für eine lineare Erörterung geprüft. Das kann einen Moment dauern.</div>';
+ try{
+   const response=await fetch(window.AI_FEEDBACK_ENDPOINT||"/api/feedback",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({classCode:code,topic:w.topic,position:w.position,args:w.args||[],intro:w.intro,body:w.body,conclusion:w.conclusion})});
+   const data=await response.json().catch(()=>({error:"Die Antwort des Feedback-Dienstes war nicht lesbar."}));
+   if(!response.ok) throw new Error(data.error||"Das Feedback konnte nicht erstellt werden.");
+   const strengths=(data.strengths||[]).map(x=>`<li>${escHTML(x)}</li>`).join("");
+   const priorities=(data.priorities||[]).map((x,i)=>`<div class="ai-item"><h3>${i+1}. ${escHTML(x.title)}</h3>${x.quote?`<div class="ai-quote">Textstelle: „${escHTML(x.quote)}“</div>`:""}<p>${escHTML(x.explanation)}</p><div class="rule"><b>Dein nächster Schritt:</b> ${escHTML(x.task)}</div></div>`).join("");
+   const language=(data.languageNotes||[]).map(x=>`<div class="ai-item"><div class="ai-quote">${escHTML(x.quote)}</div><p><b>Hinweis:</b> ${escHTML(x.suggestion)}</p><p class="muted small">${escHTML(x.reason)}</p></div>`).join("");
+   const self=(data.selfCheck||[]).map(x=>`<div class="check"><div class="checkmark">·</div><div>${escHTML(x)}</div></div>`).join("");
+   result.innerHTML=`<div class="feedback good"><b>Was dir bereits gelingt</b><ul>${strengths||"<li>Der Coach hat noch keine Stärken formuliert.</li>"}</ul></div><h3 style="margin-top:18px">Deine wichtigsten Überarbeitungsschritte</h3>${priorities||'<p>Es wurden keine konkreten Überarbeitungsschritte zurückgegeben. Lies deinen Text noch einmal anhand der Kriterien.</p>'}<h3 style="margin-top:18px">Sprache und Verständlichkeit</h3>${language||'<p class="muted">Keine einzelnen Sprachhinweise ausgewählt. Prüfe deinen Text trotzdem auf Satzbau, Zeichensetzung und Wiederholungen.</p>'}<h3 style="margin-top:18px">Zum Schluss: Prüfe selbst</h3>${self}<div class="feedback"><b>Zusammenfassung</b><p>${escHTML(data.summary||"Überarbeite deinen Text anhand der Hinweise und prüfe anschließend, ob deine Argumente nachvollziehbar begründet sind.")}</p><p class="muted small">KI-Feedback kann Fehler enthalten. Du entscheidest selbst, welche Hinweise fachlich sinnvoll sind. Der Coach vergibt keine Schulnote.</p></div>`;
+ }catch(err){result.innerHTML=`<div class="feedback bad"><b>Feedback gerade nicht verfügbar</b><p>${escHTML(err.message||"Bitte versuche es später erneut.")}</p><p class="muted small">Prüfe, ob der Feedback-Dienst veröffentlicht wurde und der Zugangscode stimmt.</p></div>`;}
+ finally{btn.disabled=false;btn.textContent="KI-Feedback erneut anfordern";}
+}
 function focus(x){S.writer.focus=x;save();document.getElementById("rf").innerHTML=`<div class="feedback good"><b>Dein Überarbeitungsschwerpunkt: ${x}</b><br>Ändere jetzt mindestens zwei Stellen in deinem eigenen Text. Begründe anschließend kurz, warum deine Änderungen ihn verbessern.</div>`}
 
 function detective(c){c.innerHTML=shell("Fehlerdetektiv","Analysiere einen schwachen argumentativen Text.");
-c.innerHTML+=`<div class="card"><h2>Text unter der Lupe</h2><div class="quote">„Ich finde, Handys sollten in der Schule erlaubt sein, weil Handys einfach cool sind. Jeder hat ein Handy. Das ist halt so. Deshalb sollten sie erlaubt sein.“</div><p>Wähle alle Probleme.</p><div class="choicegrid">${["Die Begründung ist zu schwach.","Der Stil ist teilweise umgangssprachlich.","Ein konkretes Beispiel fehlt.","Der Text verwendet zu viele Fachbegriffe."].map((x,i)=>`<button class="choice" onclick="det(${i},this)">${x}</button>`).join("")}</div><div id="df"></div></div>`}
+c.innerHTML+=`<div class="card"><h2>Text unter der Lupe</h2><div class="quote">„Ich finde, Influencer müssen Werbung nicht kennzeichnen, weil Werbung einfach nervig ist. Jeder merkt das doch. Das ist halt so. Deshalb braucht man keine Kennzeichnung.“</div><p>Wähle alle Probleme.</p><div class="choicegrid">${["Die Begründung ist zu schwach.","Der Stil ist teilweise umgangssprachlich.","Ein konkretes Beispiel fehlt.","Der Text verwendet zu viele Fachbegriffe."].map((x,i)=>`<button class="choice" onclick="det(${i},this)">${x}</button>`).join("")}</div><div id="df"></div></div>`}
 let ds=new Set();function det(i,e){if([0,1,2].includes(i)){e.classList.add("correct");ds.add(i)}else e.classList.add("wrong");if(ds.size===3){S.skills.structure=100;done("detective",20);document.getElementById("df").innerHTML=`<div class="feedback good"><b>Musterlösung:</b> Begründung zu schwach; teilweise umgangssprachlich; konkretes Beispiel fehlt.</div>`;save()}}
 
 function models(c){c.innerHTML=shell("Musterlösungen","Muster dienen zum Vergleichen und Analysieren – nicht zum Abschreiben.");
 c.innerHTML+=`<div class="card"><div class="model-lock"><h3>🔒 Erst eigener Versuch</h3><p>Schreibe zuerst selbst. Erst wenn du einen eigenen Entwurf gespeichert hast, solltest du die vollständige Musterlösung öffnen.</p>${S.ownAttempt?`<button class="btn good" onclick="showModel()">Musterlösung freischalten</button>`:`<button class="btn" onclick="nav('writer')">Jetzt eigenen Entwurf schreiben →</button>`}</div><div id="model"></div></div>`}
-function showModel(){S.modelSeen=true;save();document.getElementById("model").innerHTML=`<div class="answer"><h3>Musterlösung: lineare Erörterung</h3><p><b>Aufgabe:</b> Erörtere, ob die Schule später beginnen sollte.</p><h4>Einleitung</h4><p>Für viele Jugendliche beginnt der Schultag sehr früh. Gerade während der Pubertät verändert sich der Schlafrhythmus, sodass frühes Aufstehen für manche Schülerinnen und Schüler schwierig sein kann. Deshalb stellt sich die Frage, ob die Schule später beginnen sollte.</p><h4>Hauptteil</h4><p><b>Ein erstes Argument dafür ist, dass ein späterer Schulbeginn den Morgen entspannter machen könnte.</b> Wenn weniger Zeitdruck besteht, können Schülerinnen und Schüler ruhiger in den Tag starten. <b>Zum Beispiel</b> könnte ein späterer Unterrichtsbeginn denjenigen helfen, die einen längeren Schulweg haben.</p><p><b>Ein stärkeres Argument ist die mögliche Verbesserung der Konzentration.</b> Wer ausgeruhter ist, kann Aufgaben häufig aufmerksamer bearbeiten. Das kann besonders in den ersten Unterrichtsstunden wichtig sein, wenn anspruchsvolle Aufgaben anstehen.</p><p><b>Am stärksten wiegt schließlich, dass Jugendliche häufig einen späteren Schlafrhythmus haben.</b> Wenn der Körper abends später müde wird, ist sehr frühes Aufstehen besonders schwierig. Mehr Schlaf könnte deshalb dazu beitragen, dass Jugendliche erholter in den Schultag starten.</p><h4>Schluss</h4><p>Zusammenfassend sprechen mehrere Gründe dafür, den Unterricht später beginnen zu lassen. Besonders überzeugend ist, dass dadurch die Erholung und möglicherweise auch die Konzentration vieler Jugendlicher verbessert werden könnten. Ein späterer Schulbeginn wäre deshalb zumindest eine ernsthaft zu prüfende Möglichkeit.</p><h4>Analysiere die Musterlösung</h4><p><span class="tag">Aufhänger</span><span class="tag">Fragestellung</span><span class="tag">Behauptung</span><span class="tag">Begründung</span><span class="tag">Beispiel</span><span class="tag">Steigerung</span><span class="tag">Fazit</span></p><p class="small"><b>Wichtig:</b> Die Musterlösung ist eine mögliche Lösung, keine einzige „richtige“ Formulierung. Deine eigene Argumentation kann überzeugender sein, wenn sie anders aufgebaut ist.</p></div>`}
+function showModel(){S.modelSeen=true;save();document.getElementById("model").innerHTML=`<div class="answer"><h3>Musterlösung: lineare Erörterung</h3><p><b>Aufgabe:</b> Erörtere, ob man häufiger gebrauchte Kleidung kaufen sollte statt neue.</p><h4>Einleitung</h4><p>Viele Kleidungsstücke werden nur kurze Zeit getragen, obwohl sie noch in gutem Zustand sind. Gleichzeitig spielt Kleidung für den eigenen Stil und das Wohlbefinden eine wichtige Rolle. Deshalb stellt sich die Frage, ob man häufiger gebrauchte Kleidung kaufen sollte, statt immer neue Produkte zu wählen.</p><h4>Hauptteil</h4><p><b>Ein erstes Argument dafür ist, dass gebrauchte Kleidung oft günstiger ist.</b> Wer nicht den vollen Preis eines neuen Kleidungsstücks bezahlt, kann Geld sparen oder sich auch mit einem kleinen Budget passende Kleidung suchen. <b>Zum Beispiel</b> lässt sich manchmal eine gut erhaltene Jacke gebraucht deutlich preiswerter finden als im Geschäft.</p><p><b>Ein stärkeres Argument ist, dass Kleidungsstücke länger genutzt werden.</b> Wenn eine Person Kleidung weiterträgt, muss nicht für jede Nachfrage ein weiteres Stück hergestellt werden. Das kann dazu beitragen, Abfall zu vermeiden und vorhandene Produkte besser zu nutzen.</p><p><b>Am stärksten wiegt schließlich, dass ein bewussterer Umgang mit Kleidung Ressourcen schonen kann.</b> Für neue Kleidungsstücke werden Materialien verarbeitet und Produkte transportiert. Wird gut erhaltene Kleidung weitergegeben und weitergetragen, kann sich der Bedarf an neuen Produkten verringern.</p><h4>Schluss</h4><p>Zusammenfassend sprechen mehrere Gründe dafür, häufiger gebrauchte Kleidung zu kaufen. Besonders überzeugend ist, dass dadurch vorhandene Kleidungsstücke länger genutzt werden und Ressourcen geschont werden können. Secondhand muss nicht für alle Situationen die einzige Lösung sein, sollte aber eine selbstverständliche Möglichkeit beim Kleidungskauf sein.</p><h4>Analysiere die Musterlösung</h4><p><span class="tag">Aufhänger</span><span class="tag">Fragestellung</span><span class="tag">Behauptung</span><span class="tag">Begründung</span><span class="tag">Beispiel</span><span class="tag">Steigerung</span><span class="tag">Fazit</span></p><p class="small"><b>Wichtig:</b> Die Musterlösung ist eine mögliche Lösung, keine einzige „richtige“ Formulierung. Deine eigene Argumentation kann überzeugender sein, wenn sie anders aufgebaut ist.</p></div>`}
 
 function challenge(c){c.innerHTML=shell("Abschluss-Challenge","Jetzt ohne Schritt-für-Schritt-Hilfe.");
-c.innerHTML+=`<div class="card"><span class="pill">🏆 ABSCHLUSS</span><h2>Sollte die Schule mehr Projekttage anbieten?</h2><p>Schreibe eine Mini-Erörterung. Nutze die vier Felder als Denkgerüst, nicht als fertige Sätze.</p><div class="step"><div class="circle">1</div><input id="c1" placeholder="Deine Position"></div><div class="step"><div class="circle">2</div><input id="c2" placeholder="Dein stärkstes Argument"></div><div class="step"><div class="circle">3</div><input id="c3" placeholder="Warum gilt dieses Argument?"></div><div class="step"><div class="circle">4</div><input id="c4" placeholder="Konkretes Beispiel"></div><button class="btn good" onclick="finish()">Challenge abschließen</button><div id="chf"></div></div>`}
+c.innerHTML+=`<div class="card"><span class="pill">ABSCHLUSS</span><h2>Sollten Städte mehr autofreie Zonen einrichten?</h2><p>Schreibe eine Mini-Erörterung zu einer Frage aus dem Stadtleben. Nutze die vier Felder als Denkgerüst, nicht als fertige Sätze.</p><div class="step"><div class="circle">1</div><input id="c1" placeholder="Deine Position"></div><div class="step"><div class="circle">2</div><input id="c2" placeholder="Dein stärkstes Argument"></div><div class="step"><div class="circle">3</div><input id="c3" placeholder="Warum gilt dieses Argument?"></div><div class="step"><div class="circle">4</div><input id="c4" placeholder="Konkretes Beispiel"></div><button class="btn good" onclick="finish()">Challenge abschließen</button><div id="chf"></div></div>`}
 function finish(){let v=[1,2,3,4].map(i=>document.getElementById("c"+i).value.trim()),f=document.getElementById("chf");if(v.every(Boolean)){done("challenge",40);save();f.innerHTML=`<div class="feedback good"><b>🏆 Geschafft!</b> Du hast Position, Argument, Begründung und Beispiel selbstständig verbunden.</div>`}else f.innerHTML=`<div class="feedback warn">Fülle alle vier Felder aus. Denke besonders an den Unterschied zwischen Argument und Begründung.</div>`}
 
 function progress(c){let skills=[["Argumente","argument"],["Ordnen","order"],["Sprache","language"],["Aufbau","structure"],["Eigenes Schreiben","writing"]];c.innerHTML=shell("Mein Fortschritt","Kompetenzen statt nur Punkte.");
@@ -214,65 +494,63 @@ c.innerHTML+=`<div class="grid"><div class="card"><h3>🧩 Argument</h3><p><b>Be
 
 
 function basics(c){
-c.innerHTML=shell("🟢 Grundlagen","Stark geführt: Begriffe erkennen, Bausteine zusammensetzen und erste eigene Sätze schreiben.");
+c.innerHTML=shell("Grundlagen","Stark geführt: Begriffe erkennen, Bausteine zusammensetzen und erste eigene Sätze schreiben.");
 c.innerHTML+=`<div class="card"><span class="pill">LEVEL 1 · SICHERHEIT</span><h2>1. Argument oder Meinung?</h2>
-<p>Welche Aussage ist als Argument für einen späteren Schulbeginn am überzeugendsten?</p>
+<p>Welche Aussage ist als Argument für kostenlosen Nahverkehr für Jugendliche am überzeugendsten?</p>
 <div class="choicegrid">
-<button class="choice" onclick="basicChoice(0,this)">„Ich will morgens länger schlafen.“</button>
-<button class="choice" onclick="basicChoice(1,this)">„Ein späterer Beginn könnte sinnvoll sein, weil Jugendliche morgens häufig noch nicht vollständig erholt sind.“</button>
-<button class="choice" onclick="basicChoice(2,this)">„Später wäre einfach besser.“</button>
+<button class="choice" onclick="basicChoice(0,this)">„Ich will lieber Geld für andere Dinge ausgeben.“</button>
+<button class="choice" onclick="basicChoice(1,this)">„Kostenloser Nahverkehr könnte sinnvoll sein, weil Jugendliche dadurch unabhängiger vom Geldbeutel ihrer Familie unterwegs sein könnten.“</button>
+<button class="choice" onclick="basicChoice(2,this)">„Das wäre einfach cooler.“</button>
 </div><div id="b1"></div></div>
 <div class="card"><span class="pill">LEVEL 1 · BAUSTEINE</span><h2>2. Argument zusammensetzen</h2>
 <p>Verbinde die drei Bausteine. Ziehe sie gedanklich in die richtige Reihenfolge:</p>
 <div class="choicegrid">
-<button class="choice" onclick="basicSeq(0,this)">A: Deshalb könnte ein späterer Beginn die Aufmerksamkeit verbessern.</button>
-<button class="choice" onclick="basicSeq(1,this)">B: Wer ausreichend schläft, kann sich häufig besser konzentrieren.</button>
-<button class="choice" onclick="basicSeq(2,this)">C: Ein späterer Schulbeginn könnte die Konzentration verbessern.</button>
+<button class="choice" onclick="basicSeq(0,this)">A: Deshalb könnten mehr Jugendliche Freizeitangebote oder Freunde eigenständig erreichen.</button>
+<button class="choice" onclick="basicSeq(1,this)">B: Wenn Fahrkarten nichts kosten, können Jugendliche Wege leichter selbst planen.</button>
+<button class="choice" onclick="basicSeq(2,this)">C: Kostenloser Nahverkehr könnte Jugendlichen mehr Selbstständigkeit ermöglichen.</button>
 </div><div id="b2"></div></div>
 <div class="card"><span class="pill">LEVEL 1 · SPRACHE</span><h2>3. Einen Gedanken verbinden</h2>
-<p>Setze ein passendes Wort ein: „Viele Jugendliche schlafen morgens noch. ___ kann ein späterer Schulbeginn sinnvoll sein.“</p>
+<p>Setze ein passendes Wort ein: „Fahrkarten können für Familien teuer sein. ___ kann kostenloser Nahverkehr Jugendliche entlasten.“</p>
 <div class="choicegrid">${["Deshalb","Obwohl","Zum Beispiel","Trotzdem"].map((x,i)=>`<button class="choice" onclick="basicLink(${i},this)">${x}</button>`).join("")}</div><div id="b3"></div></div>
 <div class="card"><span class="pill">LEVEL 1 · EIGENES SCHREIBEN</span><h2>4. Ein eigener Begründungssatz</h2>
-<p>Vervollständige <b>in deinen eigenen Worten</b>: „Ein späterer Schulbeginn könnte sinnvoll sein, weil …“</p>
+<p>Vervollständige <b>in deinen eigenen Worten</b>: „Kostenloser Nahverkehr könnte sinnvoll sein, weil …“</p>
 <textarea id="b4" placeholder="Dein eigener Satz …"></textarea><button class="btn good" style="margin-top:9px" onclick="basicWrite()">Speichern</button><div id="b4f"></div></div>`}
 
 function basicChoice(i,e){if(i===1){e.classList.add("correct");done("basics",15);document.getElementById("b1").innerHTML='<div class="feedback good">Richtig. Die Aussage nennt eine Position und begründet sie sachlich.</div>'}else{e.classList.add("wrong");document.getElementById("b1").innerHTML='<div class="feedback warn">Das ist eher eine persönliche Meinung ohne ausgearbeitete Begründung.</div>'}}
 let bs=[];
-function basicSeq(i,e){let order=[2,1,0];if(i===order[bs.length]){bs.push(i);e.classList.add("correct");if(bs.length===3){document.getElementById("b2").innerHTML='<div class="feedback good">Richtig: Behauptung → Begründung → Folgerung/Beispiel.</div>'}}else{e.classList.add("wrong");document.getElementById("b2").innerHTML='<div class="feedback warn">Frage dich zuerst: Was behaupte ich? Danach: Warum? Erst dann folgt die Konkretisierung.</div>'}}
-function basicLink(i,e){if(i===0){e.classList.add("correct");document.getElementById("b3").innerHTML='<div class="feedback good">„Deshalb“ stellt den logischen Zusammenhang her.</div>'}else{e.classList.add("wrong");document.getElementById("b3").innerHTML='<div class="feedback warn">Hier brauchst du eine Folge bzw. Schlussfolgerung.</div>'}}
+function basicSeq(i,e){let order=[2,1,0];if(i===order[bs.length]){bs.push(i);e.classList.add("correct");if(bs.length===3){document.getElementById("b2").innerHTML='<div class="feedback good">Richtig: Behauptung → Begründung → Folgerung/Beispiel.</div>'}}else{e.classList.add("wrong");document.getElementById("b2").innerHTML='<div class="feedback warn">Frage dich zuerst: Was behaupte ich? Danach: Warum? Erst dann folgt die Konkretisierung.</div>'}}function basicLink(i,e){if(i===0){e.classList.add("correct");document.getElementById("b3").innerHTML='<div class="feedback good">„Deshalb“ stellt den logischen Zusammenhang her.</div>'}else{e.classList.add("wrong");document.getElementById("b3").innerHTML='<div class="feedback warn">Hier brauchst du eine Folge bzw. Schlussfolgerung.</div>'}}
 function basicWrite(){let x=document.getElementById("b4").value.trim();if(x.length>=25){S.ownAttempt=true;save();document.getElementById("b4f").innerHTML='<div class="feedback good">Eigener Satz gespeichert. Wichtig: Deine Formulierung ist wichtiger als eine Musterformulierung.</div>'}else document.getElementById("b4f").innerHTML='<div class="feedback warn">Schreibe einen vollständigen eigenen Satz.</div>'}
 
 function standard(c){
-c.innerHTML=shell("🔵 Standard","Selbstständig bearbeiten: Argumente entwickeln, ordnen und sprachlich ausbauen.");
+c.innerHTML=shell("Training","Selbstständig argumentieren, ordnen und eigene Absätze schreiben.");
 c.innerHTML+=`<div class="card"><span class="pill">LEVEL 2 · ARGUMENTATION</span><h2>1. Welches Argument ist tragfähiger?</h2>
-<p><b>Frage:</b> Sollte es weniger Hausaufgaben geben?</p>
-<div class="choicegrid"><button class="choice" onclick="std1(0,this)">„Hausaufgaben nerven und ich möchte lieber Freizeit haben.“</button><button class="choice" onclick="std1(1,this)">„Weniger Hausaufgaben könnten sinnvoll sein, wenn die zusätzliche Zeit für Erholung genutzt wird und dadurch die Konzentration am nächsten Schultag steigt.“</button></div><div id="s1"></div></div>
+<p><b>Frage:</b> Sollten Familien einen festen handyfreien Abend pro Woche einführen?</p>
+<div class="choicegrid"><button class="choice" onclick="std1(0,this)">„Handys nerven und ich will die einfach nicht sehen.“</button><button class="choice" onclick="std1(1,this)">„Ein handyfreier Abend könnte Gespräche stärken, weil alle bewusster zuhören und Unterbrechungen seltener werden.“</button></div><div id="s1"></div></div>
 <div class="card"><span class="pill">LEVEL 2 · STOFFSAMMLUNG</span><h2>2. Aus Stichpunkten ein Argument machen</h2>
-<p>Stichpunkte: <span class="tag">Projekttage</span><span class="tag">praktisches Arbeiten</span><span class="tag">Zusammenarbeit</span><span class="tag">Ergebnis</span></p>
+<p><b>Thema:</b> Sollte man häufiger gebrauchte Kleidung kaufen statt neue?</p><p>Stichpunkte: <span class="tag">günstigerer Preis</span><span class="tag">längere Nutzung</span><span class="tag">Ressourcen</span><span class="tag">eigener Stil</span></p>
 <p>Formuliere daraus einen eigenen Argumentationsabsatz mit mindestens <b>3 Sätzen</b>.</p>
 <textarea id="s2" placeholder="Dein eigener Absatz …"></textarea><button class="btn good" style="margin-top:9px" onclick="stdWrite()">Speichern</button><div id="s2f"></div></div>
 <div class="card"><span class="pill">LEVEL 2 · ORDNUNG</span><h2>3. Steigerung begründen</h2>
-<p>Du hast drei Argumente. Erkläre in 2–3 eigenen Sätzen, <b>warum</b> das stärkste am Ende stehen sollte.</p>
+<p>Stelle dir vor, du hast drei Argumente dafür gesammelt, dass Städte mehr Bäume und Sitzplätze schaffen sollten. Erkläre in 2–3 eigenen Sätzen, <b>warum</b> das stärkste Argument am Ende stehen sollte.</p>
 <textarea id="s3" placeholder="Deine Begründung der Reihenfolge …"></textarea><button class="btn good" style="margin-top:9px" onclick="stdOrder()">Speichern</button><div id="s3f"></div></div>
 <div class="card"><span class="pill">LEVEL 2 · EINLEITUNG</span><h2>4. Eigene Einleitung schreiben</h2>
-<p>Thema: <b>Sollten Handys im Unterricht teilweise erlaubt sein?</b> Schreibe eine Einleitung mit Hinführung und Fragestellung, ohne schon alle Argumente vorwegzunehmen.</p>
-<textarea id="s4" placeholder="Deine Einleitung …"></textarea><button class="btn good" style="margin-top:9px" onclick="stdIntro()">Speichern</button><div id="s4f"></div></div>`}
-function std1(i,e){if(i===1){e.classList.add("correct");document.getElementById("s1").innerHTML='<div class="feedback good">Das zweite Argument ist stärker entfaltet: Es nennt nicht nur ein persönliches Bedürfnis, sondern einen nachvollziehbaren Zusammenhang.</div>'}else{e.classList.add("wrong");document.getElementById("s1").innerHTML='<div class="feedback warn">Ein überzeugendes Argument braucht mehr als eine persönliche Vorliebe.</div>'}}
+<p>Thema: <b>Sollte man häufiger gebrauchte Kleidung kaufen statt neue?</b> Schreibe eine Einleitung mit Hinführung und Fragestellung, ohne schon alle Argumente vorwegzunehmen.</p>
+<textarea id="s4" placeholder="Deine Einleitung …"></textarea><button class="btn good" style="margin-top:9px" onclick="stdIntro()">Speichern</button><div id="s4f"></div></div>`}function std1(i,e){if(i===1){e.classList.add("correct");document.getElementById("s1").innerHTML='<div class="feedback good">Das zweite Argument ist stärker entfaltet: Es nennt nicht nur ein persönliches Bedürfnis, sondern einen nachvollziehbaren Zusammenhang.</div>'}else{e.classList.add("wrong");document.getElementById("s1").innerHTML='<div class="feedback warn">Ein überzeugendes Argument braucht mehr als eine persönliche Vorliebe.</div>'}}
 function stdWrite(){let x=document.getElementById("s2").value.trim();if(x.split(/[.!?]+/).filter(Boolean).length>=3){S.ownAttempt=true;S.skills.writing=Math.max(S.skills.writing,40);save();document.getElementById("s2f").innerHTML='<div class="feedback good">Gespeichert. Prüfe jetzt: Behauptung? Begründung? Beispiel oder konkrete Folge?</div>'}else document.getElementById("s2f").innerHTML='<div class="feedback warn">Formuliere mindestens drei vollständige Sätze.</div>'}
 function stdOrder(){let x=document.getElementById("s3").value.trim();if(x.length>=50){S.skills.order=Math.max(S.skills.order,70);save();document.getElementById("s3f").innerHTML='<div class="feedback good">Gut. Eine Steigerung ist überzeugend, wenn das stärkste Argument am Ende besonders deutlich wirkt.</div>'}else document.getElementById("s3f").innerHTML='<div class="feedback warn">Begründe deine Entscheidung ausführlicher.</div>'}
 function stdIntro(){let x=document.getElementById("s4").value.trim();if(x.length>=60){S.writer.intro=x;S.ownAttempt=true;save();document.getElementById("s4f").innerHTML='<div class="feedback good">Einleitung gespeichert. Überarbeite sie später noch einmal mit dem Kriteriencheck.</div>'}else document.getElementById("s4f").innerHTML='<div class="feedback warn">Schreibe eine vollständige Einleitung mit erkennbarem Themenbezug und Fragestellung.</div>'}
 
 function advanced(c){
-c.innerHTML=shell("🟣 Herausforderung","Für Schülerinnen und Schüler, die bereits sicher argumentieren.");
+c.innerHTML=shell("Vertiefung","Für Schülerinnen und Schüler, die bereits sicher argumentieren.");
 c.innerHTML+=`<div class="card"><span class="pill">LEVEL 3 · DIFFERENZIEREN</span><h2>1. Ein Argument kritisch prüfen</h2>
-<div class="quote">„Schuluniformen sollten eingeführt werden, weil dann alle gleich aussehen und es keine Probleme mehr wegen Kleidung gäbe.“</div>
+<div class="quote">„Online-Spiele sollten nach längerer Nutzung eine Pause empfehlen, weil dann alle automatisch aufhören und es keine Probleme mit langen Spielzeiten mehr gäbe.“</div>
 <p>Schreibe 3–5 Sätze: Was ist an diesem Argument überzeugend? Wo ist es zu pauschal? Wie könntest du es präzisieren?</p>
 <textarea id="a1" placeholder="Deine Analyse …"></textarea><button class="btn good" style="margin-top:9px" onclick="adv1()">Speichern</button><div id="a1f"></div></div>
 <div class="card"><span class="pill">LEVEL 3 · GEGENPOSITION</span><h2>2. Gegenargument aufnehmen, ohne die lineare Struktur zu verlassen</h2>
-<p>Formuliere einen Satz, der ein mögliches Gegenargument kurz aufgreift und anschließend entkräftet. Thema: <b>mehr Projekttage</b>.</p>
+<p>Formuliere einen Satz, der ein mögliches Gegenargument kurz aufgreift und anschließend entkräftet. Thema: <b>mehr kostenlose Freizeitangebote für Jugendliche</b>.</p>
 <textarea id="a2" placeholder="Dein Satz …"></textarea><button class="btn good" style="margin-top:9px" onclick="adv2()">Speichern</button><div id="a2f"></div></div>
 <div class="card"><span class="pill">LEVEL 3 · ÜBERARBEITEN</span><h2>3. Schwache Passage verbessern</h2>
-<div class="quote">„Ich finde, Projekttage sind gut. Sie machen Spaß. Außerdem kann man da viele Sachen machen. Das ist besser als normaler Unterricht.“</div>
+<div class="quote">„Ich finde, mehr Parks sind gut. Sie machen Spaß. Außerdem kann man da viele Sachen machen. Das ist besser als zu Hause sitzen.“</div>
 <p>Überarbeite die Passage so, dass ein <b>sachlicher, klar begründeter Argumentationsabsatz</b> entsteht.</p>
 <textarea id="a3" placeholder="Deine Überarbeitung …"></textarea><button class="btn good" style="margin-top:9px" onclick="adv3()">Speichern</button><div id="a3f"></div></div>
 <div class="card"><span class="pill">LEVEL 3 · REFLEXION</span><h2>4. Was macht ein Argument stark?</h2>
@@ -284,22 +562,22 @@ function adv3(){let x=document.getElementById("a3").value.trim();if(x.length>=10
 function adv4(){let x=document.getElementById("a4").value.trim();let n=(x.match(/Behauptung|Begründung|Beispiel|Beleg|These|Argument|Schluss/g)||[]).length;if(x.length>=70&&n>=3){S.skills.argument=100;save();document.getElementById("a4f").innerHTML='<div class="feedback good">Sehr gut. Du kannst nun die Qualität von Argumenten fachsprachlich erklären.</div>'}else document.getElementById("a4f").innerHTML='<div class="feedback warn">Nutze mindestens drei Fachbegriffe und erkläre ihre Funktion.</div>'}
 
 function transfer(c){
-c.innerHTML=shell("🚀 Transfer","Neue Themen: keine fertigen Satzbausteine, keine vorgegebene Musterlösung.");
+c.innerHTML=shell("Transfer","Neue Themen: keine fertigen Satzbausteine, keine vorgegebene Musterlösung.");
 c.innerHTML+=`<div class="card"><span class="pill">LEVEL 4 · SELBSTSTÄNDIG</span><h2>Wähle ein Thema</h2>
-<select id="trTopic"><option>Sollten Schulnoten durch andere Formen der Rückmeldung ergänzt werden?</option><option>Sollte die Schule einen verbindlichen Projekttag pro Monat anbieten?</option><option>Sollten Schülerinnen und Schüler mehr Mitspracherecht bei Unterrichtsthemen bekommen?</option><option>Sollten Hausaufgaben am Wochenende vermieden werden?</option></select></div>
+<select id="trTopic">${topicPool.map(t=>`<option value="${t.q}">${t.q}</option>`).join("")}</select></div>
 <div class="card"><h2>Deine Stoffsammlung</h2><p>Notiere mindestens <b>vier</b> unterschiedliche Gründe und markiere anschließend dein stärkstes Argument.</p>
 ${[1,2,3,4].map(i=>`<div class="step"><div class="circle">${i}</div><input id="tr${i}" placeholder="Argument ${i}"></div>`).join("")}
 <button class="btn good" onclick="transferIdeas()">Stoffsammlung speichern</button><div id="trf"></div></div>
-<div class="card"><h2>Deine lineare Mini-Erörterung</h2><p>Schreibe einen vollständigen Text mit Einleitung, mindestens drei Argumenten und Schluss. <b>Mindestens 250 Wörter.</b></p>
+<div class="card"><h2>Deine lineare Mini-Erörterung</h2><p>Schreibe einen vollständigen Text zur oben ausgewählten Frage mit Einleitung, mindestens drei Argumenten und Schluss. <b>Mindestens 250 Wörter.</b> Nutze die Themenfrage als Grundlage für deinen Text.</p>
 <textarea id="trText" style="min-height:260px" placeholder="Dein eigener Text …"></textarea><div class="row" style="margin-top:9px"><button class="btn good" onclick="transferSave()">Text speichern</button><button class="btn secondary" onclick="nav('review')">Mit Kriterien überarbeiten →</button></div><div id="trTextF"></div></div>
 <div class="card"><h2>Selbstreflexion</h2><p>Was ist dein stärkstes Argument – und warum? Welche Stelle würdest du beim Überarbeiten zuerst verändern?</p><textarea id="trRef" placeholder="Deine Reflexion …"></textarea><button class="btn good" style="margin-top:9px" onclick="transferRef()">Reflexion speichern</button><div id="trRefF"></div></div>`}
 function transferIdeas(){let a=[1,2,3,4].map(i=>document.getElementById("tr"+i).value.trim());if(a.every(x=>x)){S.skills.order=Math.max(S.skills.order,100);save();document.getElementById("trf").innerHTML='<div class="feedback good">Gespeichert. Entscheide jetzt bewusst, welches Argument am stärksten ist und warum es am Ende stehen sollte.</div>'}else document.getElementById("trf").innerHTML='<div class="feedback warn">Fülle alle vier Felder mit unterschiedlichen Gründen aus.</div>'}
-function transferSave(){let x=document.getElementById("trText").value.trim();let words=x.split(/\s+/).filter(Boolean).length;if(words>=250){S.ownAttempt=true;S.writer.body=x;S.skills.writing=100;done("transfer",50);save();document.getElementById("trTextF").innerHTML='<div class="feedback good">Dein eigener Transfertext wurde gespeichert. Jetzt überarbeiten statt sofort eine Musterlösung zu suchen.</div>'}else document.getElementById("trTextF").innerHTML=`<div class="feedback warn">Dein Text hat etwa ${words} Wörter. Schreibe mindestens 250 Wörter, damit du eine vollständige Mini-Erörterung entwickelst.</div>`}
+function transferSave(){let x=document.getElementById("trText").value.trim();let words=x.split(/\s+/).filter(Boolean).length;if(words>=250){S.ownAttempt=true;S.writer.topic=document.getElementById("trTopic").value;S.writer.body=x;S.skills.writing=100;done("transfer",50);save();document.getElementById("trTextF").innerHTML='<div class="feedback good">Dein eigener Transfertext wurde gespeichert. Jetzt überarbeiten statt sofort eine Musterlösung zu suchen.</div>'}else document.getElementById("trTextF").innerHTML=`<div class="feedback warn">Dein Text hat etwa ${words} Wörter. Schreibe mindestens 250 Wörter, damit du eine vollständige Mini-Erörterung entwickelst.</div>`}
 function transferRef(){let x=document.getElementById("trRef").value.trim();if(x.length>=80){save();document.getElementById("trRefF").innerHTML='<div class="feedback good">Reflexion gespeichert. Gute Schreibende können nicht nur schreiben, sondern ihre Entscheidungen erklären.</div>'}else document.getElementById("trRefF").innerHTML='<div class="feedback warn">Begründe deine Überlegungen ausführlicher.</div>'}
 
 
 function student(c){
-c.innerHTML=shell("👤 Mein Lernstand","Dein Fortschritt bleibt auf diesem Gerät gespeichert. Nutze deinen eigenen Namen oder ein Kürzel.");
+c.innerHTML=shell("Mein Lernstand","Dein Fortschritt bleibt auf diesem Gerät gespeichert. Nutze deinen eigenen Namen oder ein Kürzel.");
 c.innerHTML+=`<div class="card"><h2>Dein Profil</h2><p class="muted">Kein Konto nötig. Verwende aus Datenschutzgründen am besten ein Kürzel.</p>
 <div class="row"><input id="studentName" placeholder="Name oder Kürzel" value="${S.studentName||''}" style="max-width:320px"><button class="btn" onclick="saveStudent()">Speichern</button></div><div id="studentF"></div></div>
 <div class="grid">
@@ -318,7 +596,7 @@ c.innerHTML+=`<div class="card"><h2>Dein Profil</h2><p class="muted">Kein Konto 
 function saveStudent(){let n=document.getElementById("studentName").value.trim();if(!n){document.getElementById("studentF").innerHTML='<div class="feedback warn">Bitte ein Kürzel oder einen Namen eingeben.</div>';return}S.studentName=n;save();document.getElementById("studentF").innerHTML='<div class="feedback good">Profil gespeichert.</div>';updateStatus()}
 
 function teacher(c){
-c.innerHTML=shell("📊 Lehrkraft","Einfache lokale Auswertung für die Arbeit im Unterricht.");
+c.innerHTML=shell("Lehrkraft","Einfache lokale Auswertung für die Arbeit im Unterricht.");
 c.innerHTML+=`<div class="card"><h2>Klassenansicht</h2>
 <p class="muted">Diese Einzeldatei kann keine Schülerdaten an einen Server senden. Deshalb zeigt die Lehrkraftansicht den Lernstand dieses Browsers. Für eine echte gemeinsame Klassenstatistik braucht die Plattform später eine Datenbank oder ein LMS.</p>
 <div class="grid">
@@ -342,9 +620,8 @@ let el=document.getElementById("classStatus");if(!el)return;
 el.innerHTML=`<div class="between"><span><b>${S.studentName||"Noch kein Profil"}</b> · ${S.done.length}/14 Bereiche abgeschlossen</span><span class="pill">${Math.round((S.done.length/14)*100)} %</span></div>`;
 }
 
-function render(p){({home,curriculum,operator,map,argument,battle,order,language,intro,mainpart,conclusion,writer,review,basics,standard,advanced,transfer,student,teacher,detective,models,challenge,progress,help}[p]||home)(document.getElementById("content"))}
+function render(p){({home,series,curriculum,operator,map,topics,argument,battle,order,language,intro,mainpart,conclusion,practice,writer,review,basics,standard,advanced,transfer,student,teacher,detective,models,challenge,progress,help}[p]||home)(document.getElementById("content"))}
 render("home");
 </script>
 </body>
 </html>
-<script>setTimeout(updateStatus,50);</script>
